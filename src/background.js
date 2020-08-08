@@ -16,4 +16,8 @@ const getImages = () => {
     });
 };
 
-getImages();
+const initBackground = () => {
+  getImages();
+};
+
+initBackground();
