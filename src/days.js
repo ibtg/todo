@@ -35,7 +35,7 @@ const daysInit = () => {
       currentDate === startDate ? dayCountValue : dayCountValue + 1;
 
     const dateJson = JSON.stringify({
-      startDate: currentDate,
+      startDate: startDate,
       dayCount: dayCountValue,
     });
 
