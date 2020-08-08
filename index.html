@@ -9,6 +9,9 @@
     <script src="./src/greeting.js" defer></script>
     <script src="./src/weather.js" defer></script>
     <script src="./src/days.js" defer></script>
+    <script src="./src/todo.js" defer></script>
+    <!-- <script src="./src/background.js" defer></script> -->
+    <script src="/src/quotes.js" defer></script>
   </head>
   <body>
     <div class="clock">
@@ -28,10 +31,15 @@
 
       <h3 class="user__greeting">greeting</h3>
 
+      <div class="quotes">
+        <h1></h1>
+        <span></span>
+      </div>
+
       <!-- for todo list input -->
       <div class="todo">
-        <form action="" class="todo__input">
-          <input type="text" />
+        <form action="" class="todo__form">
+          <input class="todo__input" type="text" />
         </form>
         <ul class="todo__lists"></ul>
       </div>
