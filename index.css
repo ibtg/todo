@@ -1,6 +1,5 @@
 .user__form,
-.user__greeting,
-.todo {
+.user__greeting {
   display: none;
 }
 
