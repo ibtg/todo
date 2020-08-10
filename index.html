@@ -6,9 +6,9 @@
     <title>Todo</title>
     <link rel="stylesheet" href="index.css" />
     <script src="./src/clock.js" defer></script>
-    <script src="./src/greeting.js" defer></script>
+    <script src="./src/greeting.js" defer type="module"></script>
     <script src="./src/weather.js" defer></script>
-    <script src="./src/days.js" defer></script>
+    <script src="./src/days.js" defer type="module"></script>
     <script src="./src/todo.js" defer></script>
     <!-- <script src="./src/background.js" defer></script> -->
     <script src="/src/quotes.js" defer></script>
@@ -17,19 +17,21 @@
     <div class="clock">
       <span>00:00</span>
     </div>
-    <div class="days">11days</div>
+    <div class="days">
+      <span class="day"></span>
+    </div>
     <div class="weather__container">
       <div class="weather">wheather</div>
       <div class="location">location</div>
     </div>
+
+    <!-- user -->
     <div class="user">
-      <!-- for user name input -->
+      <!-- user name input -->
       <form class="user__form form__showing" action="">
-        <span>What is your name ?</span>
+        <span>Hello, what is your name ?</span>
         <input type="text" placeholder="" />
       </form>
-
-      <h3 class="user__greeting">greeting</h3>
 
       <div class="quotes">
         <h1></h1>

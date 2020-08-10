@@ -1,6 +1,5 @@
-const form = document.querySelector('.user__form');
-const formInput = form.querySelector('input');
-const greeting = document.querySelector('.user__greeting');
+const userForm = document.querySelector('.user__form');
+const userInput = userForm.querySelector('input');
 const toDo = document.querySelector('.todo');
 
 const USER_LS = 'currentUser';
@@ -12,21 +11,16 @@ const saveName = (text) => {
 
 const onNameSubmit = (event) => {
   event.preventDefault();
-  const currentvalue = formInput.value;
-  paintGreeting(currentvalue);
+  const currentvalue = userInput.value;
+  // paintGreeting(currentvalue);
+  userForm.classList.remove(SHOWING_ON);
+
   saveName(currentvalue);
 };
 
 const askForName = () => {
-  form.classList.add(SHOWING_ON);
-  form.addEventListener('submit', onNameSubmit);
-};
-
-const paintGreeting = (text) => {
-  form.classList.remove(SHOWING_ON);
-  greeting.classList.add(SHOWING_ON);
-  greeting.innerText = `Hello ${text}`;
-  toDo.style.diplay = 'block';
+  userForm.classList.add(SHOWING_ON);
+  userForm.addEventListener('submit', onNameSubmit);
 };
 
 const loadName = () => {
@@ -34,7 +28,7 @@ const loadName = () => {
   if (currentUser === null) {
     askForName();
   } else {
-    paintGreeting(currentUser);
+    userForm.classList.remove(SHOWING_ON);
   }
 };
 
@@ -43,3 +37,5 @@ const greetingInit = () => {
 };
 
 greetingInit();
+
+export { USER_LS };
