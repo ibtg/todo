@@ -26,7 +26,7 @@
   /* Space */
 
   --medium-space: 24px;
-  /* --regular-space: 18px; */
+  --regular-space: 18px;
   --base-space: 8px;
 
   /* Animation */
@@ -59,7 +59,8 @@ li {
 }
 
 .user__form,
-.user__greeting {
+.user__greeting,
+.todo {
   display: none;
 }
 
@@ -134,4 +135,21 @@ li {
   max-width: 980px;
   margin: 0 auto;
   transform: translateY(-200%);
+}
+
+/* todo */
+
+.todo .todo__input {
+  font-size: var(--font-medium);
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--color-black);
+}
+
+.todo .todo__lists {
+  font-size: var(--font-medium);
+}
+
+.todo .todo__lists > li {
+  margin-top: var(--base-space);
 }

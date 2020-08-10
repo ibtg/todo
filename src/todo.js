@@ -1,9 +1,18 @@
+import { USER_LS, userForm, SHOWING_ON } from './greeting.js';
+
+const todo = document.querySelector('.todo');
 const todoForm = document.querySelector('.todo__form');
 const todoInput = document.querySelector('.todo__input');
 const todoList = document.querySelector('.todo__lists');
 
 const TODOS_LS = 'toDos';
 let todos = [];
+
+const onNameSubmit = () => {
+  userForm.addEventListener('submit', () => {
+    todo.classList.add(SHOWING_ON);
+  });
+};
 
 const saveTodos = (todos) => {
   localStorage.setItem(TODOS_LS, JSON.stringify(todos));
@@ -62,12 +71,17 @@ const loadTodos = () => {
       paintTodo(todo.text);
     });
   }
-  console.log('loadTodos');
 };
 
 const todoInit = () => {
+  const userName = localStorage.getItem(USER_LS);
+
+  if (userName !== null) {
+    todo.classList.add(SHOWING_ON);
+  }
   loadTodos();
   todoForm.addEventListener('submit', onHandleSubmit);
+  onNameSubmit();
 };
 
 todoInit();

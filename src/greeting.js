@@ -35,4 +35,4 @@ const greetingInit = () => {
 
 greetingInit();
 
-export { USER_LS, userForm };
+export { USER_LS, userForm, SHOWING_ON };
