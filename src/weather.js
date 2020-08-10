@@ -5,8 +5,30 @@ const weatherLocation = weatherContainer.querySelector('.location');
 const COORDS = 'coords';
 const API_KEY = 'babfdfb21b2a28a90c383505260bc2e4';
 
+const paintWeather = (obj) => {
+  const weatherImg = document.createElement('img');
+  const weatherIcon = obj.weather[0].icon;
+  console.log(obj);
+  console.log(obj.weather[0].icon);
+
+  weatherImg.setAttribute(
+    'src',
+    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+  );
+
+  weatherImg.style.width = `${50}px`;
+  weatherImg.style.height = `${50}px`;
+  weatherImg.style.transform = `translateY(${12}px)`;
+
+  console.log(weatherImg);
+  const temp = obj.main.temp;
+  const place = obj.name;
+  weather.innerText = `${temp}°C`;
+  weatherLocation.innerText = `${place}`;
+  weather.appendChild(weatherImg);
+};
+
 const getWeather = (lat, lon) => {
-  console.log('getweather');
   fetch(
     `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
   )
@@ -14,10 +36,7 @@ const getWeather = (lat, lon) => {
       return response.json();
     })
     .then((json) => {
-      const temp = json.main.temp;
-      const place = json.name;
-      weather.innerText = `${temp}°C`;
-      weatherLocation.innerText = `${place}`;
+      paintWeather(json);
     });
 };
 

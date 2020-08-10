@@ -43,7 +43,8 @@ ul,
 li,
 div,
 span,
-h1 {
+h1,
+img {
   margin: 0;
   padding: 0;
 }
