@@ -1,11 +1,14 @@
+import { USER_LS } from './greeting.js';
+
 const quotes = document.querySelector('.quotes');
-const quotesContent = quotes.querySelector('h1');
-const quotesAuthor = quotes.querySelector('span');
 
 const paintQuotes = (obj) => {
-  console.log(obj);
+  const quotesContent = document.createElement('h1');
+  const quotesAuthor = document.createElement('span');
   quotesContent.innerText = obj.quote;
-  quotesAuthor.innerText = obj.author;
+  quotesAuthor.innerText = `- ${obj.author} -`;
+  quotes.appendChild(quotesContent);
+  quotes.appendChild(quotesAuthor);
 };
 
 const getQuotes = () => {
@@ -14,26 +17,22 @@ const getQuotes = () => {
       return response.json();
     })
     .then((json) => {
-      // console.log(json);
-      // console.log(json.contents.quotes);
-      // console.log(json.contents.quotes[0]);
-      // console.log(json.contents.quotes[0].quote);
-      // console.log(json.contents.quotes[0].author);
       const quoteObj = {
         author: json.contents.quotes[0].author,
         quote: json.contents.quotes[0].quote,
       };
-      // console.log(quoteObj);
-      // return {
-      //   author: json.contents.quotes[0].author,
-      //   quote: json.contents.quotes[0].quote,
-      // };
+
       paintQuotes(quoteObj);
     });
 };
 
 const quotesInit = () => {
-  getQuotes();
+  const userName = localStorage.getItem(USER_LS);
+  if (userName !== null) {
+    getQuotes();
+  }
 };
 
 quotesInit();
+
+export { getQuotes };
