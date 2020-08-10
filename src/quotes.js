@@ -9,8 +9,14 @@ const onNameSubmit = () => {
 const paintQuotes = (obj) => {
   const quotesContent = document.createElement('h1');
   const quotesAuthor = document.createElement('span');
-  quotesContent.innerText = obj.quote;
-  quotesAuthor.innerText = `- ${obj.author} -`;
+  quotesContent.textContent = obj.quote;
+  quotesContent.style.fontSize = '48px';
+
+  quotesAuthor.textContent = `- ${obj.author} -`;
+  quotesAuthor.style.transform = `translateX(${-150}px)`;
+  quotesAuthor.style.paddingTop = '18px';
+  quotesAuthor.style.fontSize = '24px';
+
   quotes.appendChild(quotesContent);
   quotes.appendChild(quotesAuthor);
 };

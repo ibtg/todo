@@ -152,10 +152,10 @@ li {
   align-items: flex-end;
   max-width: 980px;
   margin: 0 auto;
-  transform: translateY(-200%);
+  transform: translateY(-160%);
   color: var(--color-white);
   position: absolute;
-  top: 350px;
+  /* top: 350px; */
 }
 
 /* todo */
