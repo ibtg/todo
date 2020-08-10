@@ -1,9 +1,15 @@
-import { USER_LS } from './greeting.js';
+import { USER_LS, userForm } from './greeting.js';
 
 const days = document.querySelector('.days');
 const day = days.querySelector('.day');
-
 const DAYS_LS = 'days';
+
+const onNameSubmit = () => {
+  userForm.addEventListener('submit', () => {
+    getUser();
+    getDays();
+  });
+};
 
 const getUser = () => {
   const userName = localStorage.getItem(USER_LS);
@@ -48,8 +54,12 @@ const getDays = () => {
 };
 
 const daysInit = () => {
-  getDays();
-  getUser();
+  const userName = localStorage.getItem(USER_LS);
+  if (userName !== null) {
+    getUser();
+    getDays();
+  }
+  onNameSubmit();
 };
 
 daysInit();
