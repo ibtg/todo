@@ -1,7 +1,5 @@
 const userForm = document.querySelector('.user__form');
 const userInput = userForm.querySelector('input');
-const toDo = document.querySelector('.todo');
-
 const USER_LS = 'currentUser';
 const SHOWING_ON = 'form__showing';
 
@@ -12,7 +10,6 @@ const saveName = (text) => {
 const onNameSubmit = (event) => {
   event.preventDefault();
   const currentvalue = userInput.value;
-  // paintGreeting(currentvalue);
   userForm.classList.remove(SHOWING_ON);
 
   saveName(currentvalue);
@@ -38,4 +35,4 @@ const greetingInit = () => {
 
 greetingInit();
 
-export { USER_LS };
+export { USER_LS, userForm };

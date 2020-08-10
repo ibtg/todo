@@ -1,6 +1,10 @@
-import { USER_LS } from './greeting.js';
+import { USER_LS, userForm } from './greeting.js';
 
 const quotes = document.querySelector('.quotes');
+
+const onNameSubmit = () => {
+  userForm.addEventListener('submit', getQuotes);
+};
 
 const paintQuotes = (obj) => {
   const quotesContent = document.createElement('h1');
@@ -31,8 +35,7 @@ const quotesInit = () => {
   if (userName !== null) {
     getQuotes();
   }
+  onNameSubmit();
 };
 
 quotesInit();
-
-export { getQuotes };
