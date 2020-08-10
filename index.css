@@ -8,10 +8,10 @@
 
   /* Font size */
 
-  --font-large: 48px;
-  --font-medium: 28px;
-  --font-regular: 18px;
-  --font-small: 16px;
+  --font-large: 52px;
+  --font-medium: 42px;
+  --font-regular: 32px;
+  --font-small: 18px;
   --font-micro: 14px;
 
   /* Font weight */
@@ -52,6 +52,7 @@ body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   cursor: default;
+  background-color: aquamarine;
 }
 
 li {
@@ -73,8 +74,10 @@ li {
 /* clock */
 .clock {
   position: absolute;
-  top: 10px;
-  left: 20px;
+  bottom: 10px;
+  right: 20px;
+  color: var(--color-white);
+  font-size: var(--font-medium);
 }
 
 /* days */
@@ -83,6 +86,7 @@ li {
   top: 10px;
   right: 20px;
   font-size: var(--font-regular);
+  color: var(--color-white);
 }
 
 .day {
@@ -95,6 +99,15 @@ li {
   position: absolute;
   bottom: 10px;
   left: 20px;
+  color: var(--color-white);
+}
+
+.weather {
+  font-size: var(--font-regular);
+}
+
+.location {
+  font-size: var(--font-small);
 }
 
 /* user */
@@ -110,14 +123,18 @@ li {
 
 .user__form > span {
   font-size: var(--font-large);
+  color: var(--color-white);
 }
 
 .user__form > input {
   border: none;
   outline: none;
-  border-bottom: 1px solid var(--color-black);
+  border-bottom: 1px solid var(--color-white);
   margin-top: var(--medium-space);
   font-size: var(--font-medium);
+  background-color: transparent;
+  color: var(--color-white);
+  text-align: center;
 }
 
 /* greeting */
@@ -135,21 +152,33 @@ li {
   max-width: 980px;
   margin: 0 auto;
   transform: translateY(-200%);
+  color: var(--color-white);
+  position: absolute;
+  top: 350px;
 }
 
 /* todo */
+
+.todo {
+  position: absolute;
+  top: 300px;
+}
 
 .todo .todo__input {
   font-size: var(--font-medium);
   border: none;
   outline: none;
-  border-bottom: 1px solid var(--color-black);
+  border-bottom: 1px solid var(--color-white);
+  background-color: transparent;
+  color: var(--color-white);
 }
 
 .todo .todo__lists {
   font-size: var(--font-medium);
+  color: var(--color-white);
 }
 
 .todo .todo__lists > li {
   margin-top: var(--base-space);
+  font-size: var(--font-regular);
 }

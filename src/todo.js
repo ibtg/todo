@@ -65,8 +65,9 @@ const onHandleSubmit = (event) => {
 
 const loadTodos = () => {
   const loadedTodos = localStorage.getItem(TODOS_LS);
+  const parsedTodos = JSON.parse(loadedTodos);
+
   if (loadedTodos !== null) {
-    const parsedTodos = JSON.parse(loadedTodos);
     parsedTodos.forEach((todo) => {
       paintTodo(todo.text);
     });
@@ -80,8 +81,10 @@ const todoInit = () => {
     todo.classList.add(SHOWING_ON);
   }
   loadTodos();
-  todoForm.addEventListener('submit', onHandleSubmit);
-  onNameSubmit();
+  if (todos.length < 10) {
+    todoForm.addEventListener('submit', onHandleSubmit);
+    onNameSubmit();
+  }
 };
 
 todoInit();
