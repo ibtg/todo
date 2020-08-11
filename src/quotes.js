@@ -27,6 +27,7 @@ const getQuotes = () => {
       return response.json();
     })
     .then((json) => {
+      console.log(json);
       const quoteObj = {
         author: json.contents.quotes[0].author,
         quote: json.contents.quotes[0].quote,

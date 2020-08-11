@@ -58,8 +58,11 @@ const paintTodo = (text) => {
 
 const onHandleSubmit = (event) => {
   event.preventDefault();
-  const currentValue = todoInput.value;
-  paintTodo(currentValue);
+  if (todos.length < 10) {
+    const currentValue = todoInput.value;
+    paintTodo(currentValue);
+  }
+
   todoInput.value = '';
 };
 
@@ -81,10 +84,10 @@ const todoInit = () => {
     todo.classList.add(SHOWING_ON);
   }
   loadTodos();
-  if (todos.length < 10) {
-    todoForm.addEventListener('submit', onHandleSubmit);
-    onNameSubmit();
-  }
+
+  todoForm.addEventListener('submit', onHandleSubmit);
+
+  onNameSubmit();
 };
 
 todoInit();
