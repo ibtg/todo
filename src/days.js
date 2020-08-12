@@ -25,7 +25,6 @@ const saveDays = (date) => {
 };
 
 const paintDays = (dayCount) => {
-  console.log(dayCount);
   day.textContent = `Day ${dayCount}`;
 };
 

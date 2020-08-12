@@ -18,10 +18,23 @@ const saveTodos = (todos) => {
   localStorage.setItem(TODOS_LS, JSON.stringify(todos));
 };
 
-const deleteBtn = (event) => {
-  const btn = event.target;
+const checkBtn = (event) => {
+  const btn = event.target.parentNode;
+  const unchecked = btn.classList.toggle('unchecked');
   const li = btn.parentNode;
 
+  if (!unchecked) {
+    btn.innerHTML = '<i class="far fa-check-square"></i>';
+    li.style.textDecoration = 'line-through';
+  } else {
+    btn.innerHTML = '<i class="far fa-square"></i>';
+    li.style.textDecoration = 'none';
+  }
+};
+
+const deleteBtn = (event) => {
+  const btn = event.target.parentNode;
+  const li = btn.parentNode;
   todoList.removeChild(li);
   const cleanTodos = todos.filter((todo) => {
     return todo.id !== parseInt(li.id);
@@ -34,16 +47,32 @@ const deleteBtn = (event) => {
 
 const paintTodo = (text) => {
   const li = document.createElement('li');
-  const delBtn = document.createElement('button');
+  li.setAttribute('class', 'todo__item');
+
+  const check = document.createElement('button');
+  check.setAttribute('class', 'todo__check unchecked');
+
   const span = document.createElement('span');
+  span.setAttribute('class', 'todo__content');
+
+  const delBtn = document.createElement('button');
+  delBtn.setAttribute('class', 'todo__delete');
+
   const newId = todos.length + 1;
 
-  delBtn.innerText = 'X';
+  check.innerHTML = '<i class="far fa-square"></i>';
+  check.addEventListener('click', checkBtn);
+
+  delBtn.innerHTML = '<i class="fas fa-times"></i>';
   delBtn.addEventListener('click', deleteBtn);
 
   span.innerText = text;
-  li.appendChild(delBtn);
+
+  li.appendChild(check);
   li.appendChild(span);
+  li.appendChild(delBtn);
+  li.scrollIntoView({ block: 'center' });
+
   li.id = newId;
 
   todoList.appendChild(li);
@@ -64,6 +93,7 @@ const onHandleSubmit = (event) => {
   }
 
   todoInput.value = '';
+  todoInput.focus();
 };
 
 const loadTodos = () => {
@@ -86,7 +116,7 @@ const todoInit = () => {
   loadTodos();
 
   todoForm.addEventListener('submit', onHandleSubmit);
-
+  todoInput.focus();
   onNameSubmit();
 };
 
