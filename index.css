@@ -194,7 +194,7 @@ li {
 .todo {
   position: absolute;
   top: 30%;
-  width: 600px;
+  /* width: 600px; */
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -209,35 +209,34 @@ li {
   width: 100%;
 }
 
-.todo .todo__lists {
+/* todo lists */
+.todo__lists {
   font-size: var(--font-medium);
   color: var(--color-white);
 }
 
-.todo .todo__lists .todo__item {
+.todo__lists .todo__item {
   margin-top: var(--base-space);
   font-size: var(--font-regular);
   animation: fadeIn 0.5s ease-in-out;
   display: flex;
   align-items: center;
-  width: 100%;
   border-radius: var(--size-border-radius);
 }
-.todo .todo__lists .todo__item .todo__delete {
-  align-items: flex-end;
-}
-.todo .todo__lists .todo__item .todo__content {
+
+.todo__lists .todo__item .todo__content {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 600px;
 }
 
-.todo .todo__lists .todo__item:hover {
+.todo__lists .todo__item:hover {
   transform: scale(1.01);
   background: rgba(245, 245, 245, 0.3);
 }
 
-.todo .todo__lists > li > button {
+.todo__lists .todo__item > button {
   width: 32px;
   height: 32px;
   background: transparent;
@@ -246,24 +245,15 @@ li {
   color: var(--color-white);
   transition: transform 200ms ease-in;
   font-size: 18px;
-}
-
-.todo .todo__lists > li > button:hover {
-  background: rgba(245, 245, 245, 0.3);
-  color: var(--color-white);
-
-  border-radius: 50%;
-  transform: scale(1.3);
-}
-
-.todo .todo__lists .todo__check {
-  margin-top: var(--base-space);
-  margin-right: var(--small-space);
-}
-
-.todo .todo__lists .todo__delete {
   margin-top: var(--base-space);
   margin-left: var(--small-space);
+}
+
+.todo__lists .todo__item > button:hover {
+  background: rgba(245, 245, 245, 0.3);
+  color: var(--color-white);
+  border-radius: 50%;
+  transform: scale(1.3);
 }
 
 @keyframes fadeIn {

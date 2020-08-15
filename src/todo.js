@@ -94,9 +94,9 @@ const paintTodo = (text) => {
 const onHandleSubmit = (event) => {
   event.preventDefault();
   if (todos.length < 10) {
+    const currentValue = todoInput.value;
+    paintTodo(currentValue);
   }
-  const currentValue = todoInput.value;
-  paintTodo(currentValue);
 
   todoInput.value = '';
   todoInput.focus();
