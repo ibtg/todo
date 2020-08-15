@@ -11,7 +11,7 @@ const paintWeather = (obj) => {
 
   weatherImg.setAttribute(
     'src',
-    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+    `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
   );
 
   weatherImg.style.width = `${50}px`;
