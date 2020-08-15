@@ -35,6 +35,7 @@ const checkBtn = (event) => {
 const deleteBtn = (event) => {
   const btn = event.target.parentNode;
   const li = btn.parentNode;
+
   todoList.removeChild(li);
   const cleanTodos = todos.filter((todo) => {
     return todo.id !== parseInt(li.id);
@@ -46,6 +47,11 @@ const deleteBtn = (event) => {
 };
 
 const paintTodo = (text) => {
+  if (text === '') {
+    todoInput.focus();
+    return;
+  }
+
   const li = document.createElement('li');
   li.setAttribute('class', 'todo__item');
 
@@ -88,9 +94,9 @@ const paintTodo = (text) => {
 const onHandleSubmit = (event) => {
   event.preventDefault();
   if (todos.length < 10) {
-    const currentValue = todoInput.value;
-    paintTodo(currentValue);
   }
+  const currentValue = todoInput.value;
+  paintTodo(currentValue);
 
   todoInput.value = '';
   todoInput.focus();

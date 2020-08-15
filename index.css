@@ -189,17 +189,19 @@ li {
 .todo {
   position: absolute;
   top: 30%;
+  width: 600px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .todo .todo__input {
   font-size: var(--font-medium);
   border: none;
   outline: none;
-  border-bottom: 1px solid var(--color-white);
+  border-bottom: 3px solid var(--color-white);
   background-color: transparent;
   color: var(--color-white);
-  animation: fadeIn 1s ease-in-out;
   text-align: center;
+  width: 100%;
 }
 
 .todo .todo__lists {
@@ -207,12 +209,28 @@ li {
   color: var(--color-white);
 }
 
-.todo .todo__lists > li {
+.todo .todo__lists .todo__item {
   margin-top: var(--base-space);
   font-size: var(--font-regular);
   animation: fadeIn 0.5s ease-in-out;
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
+  width: 100%;
+  border-radius: 2px;
+  /* background: rgba(245, 245, 245, 0.3); */
+}
+.todo .todo__lists .todo__item .todo__delete {
+  align-items: flex-end;
+}
+.todo .todo__lists .todo__item .todo__content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.todo .todo__lists .todo__item:hover {
+  background: rgba(245, 245, 245, 0.3);
 }
 .todo .todo__lists > li > button {
   width: 32px;
