@@ -215,10 +215,8 @@ li {
   animation: fadeIn 0.5s ease-in-out;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   width: 100%;
-  border-radius: 2px;
-  /* background: rgba(245, 245, 245, 0.3); */
+  border-radius: var(--size-border-radius);
 }
 .todo .todo__lists .todo__item .todo__delete {
   align-items: flex-end;
@@ -230,8 +228,10 @@ li {
 }
 
 .todo .todo__lists .todo__item:hover {
+  transform: scale(1.01);
   background: rgba(245, 245, 245, 0.3);
 }
+
 .todo .todo__lists > li > button {
   width: 32px;
   height: 32px;
