@@ -14,11 +14,7 @@ const paintQuotes = (obj) => {
   quotesAuthor.setAttribute('class', 'quotes__author');
 
   quotesContent.textContent = obj.quote;
-  // quotesContent.style.fontSize = '36px';
-
   quotesAuthor.textContent = `- ${obj.author} -`;
-  // quotesAuthor.style.paddingTop = '18px';
-  // quotesAuthor.style.fontSize = '24px';
 
   quotes.appendChild(quotesContent);
   quotes.appendChild(quotesAuthor);
