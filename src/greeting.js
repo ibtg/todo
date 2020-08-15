@@ -9,9 +9,7 @@ const saveName = (text) => {
 
 const onNameSubmit = (event) => {
   event.preventDefault();
-  console.log('event: ', event);
   const currentvalue = userInput.value;
-  console.log(currentvalue);
   userForm.classList.remove(SHOWING_ON);
 
   saveName(currentvalue);
@@ -32,7 +30,6 @@ const loadName = () => {
 };
 
 const greetingInit = () => {
-  console.log('greetings');
   loadName();
 };
 
