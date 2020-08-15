@@ -9,12 +9,12 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="index.css" />
+    <script src="./src/background.js" defer></script>
     <script src="./src/clock.js" defer></script>
     <script src="./src/greeting.js" defer type="module"></script>
     <script src="./src/weather.js" defer></script>
     <script src="./src/days.js" defer type="module"></script>
     <script src="./src/todo.js" defer type="module"></script>
-    <!-- <script src="./src/background.js" defer></script> -->
     <script src="/src/quotes.js" defer type="module"></script>
     <script
       src="https://kit.fontawesome.com/82c3c900af.js"
@@ -22,34 +22,36 @@
     ></script>
   </head>
   <body>
-    <div class="clock">
-      <span class="clock__AMPM">AMPM</span>
-      <span class="clock__time">00:00</span>
-    </div>
-    <div class="days">
-      <span class="day"></span>
-    </div>
-    <div class="weather__container">
-      <div class="weather">wheather</div>
-      <div class="location">location</div>
-    </div>
+    <div class="background background__loading">
+      <div class="clock">
+        <span class="clock__AMPM">AMPM</span>
+        <span class="clock__time">00:00</span>
+      </div>
+      <div class="days">
+        <span class="day"></span>
+      </div>
+      <div class="weather__container">
+        <div class="weather">wheather</div>
+        <div class="location">location</div>
+      </div>
 
-    <!-- user -->
-    <div class="user">
-      <!-- user name input -->
-      <form class="user__form form__showing" action="">
-        <span>Hello, what is your name ?</span>
-        <input type="text" placeholder="" />
-      </form>
-
-      <div class="quotes"></div>
-
-      <!-- for todo list input -->
-      <div class="todo">
-        <form action="" class="todo__form">
-          <input class="todo__input" type="text" />
+      <!-- user -->
+      <div class="user">
+        <!-- user name input -->
+        <form class="user__form form__showing" action="">
+          <span>Hello, what is your name ?</span>
+          <input type="text" placeholder="" />
         </form>
-        <ul class="todo__lists"></ul>
+
+        <div class="quotes"></div>
+
+        <!-- for todo list input -->
+        <div class="todo">
+          <form action="" class="todo__form">
+            <input class="todo__input" type="text" />
+          </form>
+          <ul class="todo__lists"></ul>
+        </div>
       </div>
     </div>
   </body>

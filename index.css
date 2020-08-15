@@ -56,7 +56,6 @@ body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   cursor: default;
-  background-color: aquamarine;
 }
 
 li {
@@ -69,6 +68,24 @@ li {
   display: none;
 }
 
+.background {
+  animation: fadeIn 3s ease-out;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.background__loading {
+  display: none;
+}
+
+/* container */
+
+.container {
+  animation: fadeIn 4s ease-in-out;
+}
 /* form */
 .form__showing {
   display: flex;
@@ -164,10 +181,12 @@ li {
   position: absolute;
   top: 10%;
   animation: fadeIn 1s ease-in-out;
+  /* background: rgba(0, 0, 0, 0.3); */
 }
 
 .quotes > h1 {
   animation: fadeIn 1s ease-in-out;
+  font-weight: 2000;
 }
 
 .quotes > span {
