@@ -29,26 +29,22 @@ const paintDays = (dayCount) => {
 };
 
 const getDays = () => {
-  const currentDays = localStorage.getItem(DAYS_LS);
+  const loadedDays = localStorage.getItem(DAYS_LS);
+  const today = new Date().getDay();
 
-  if (currentDays === null) {
+  if (loadedDays === null) {
+    const dateJson = JSON.stringify({ dayId: today, dayCount: 1 });
     paintDays(1);
-    const currentDate = new Date();
-    const dateJson = JSON.stringify({ startDate: currentDate, dayCount: 1 });
+    saveDays(dateJson);
+  } else if (JSON.parse(loadedDays).dayId !== today) {
+    const dateJson = JSON.stringify({
+      dayId: today,
+      dayCount: JSON.parse(loadedDays).dayCount + 1,
+    });
+    paintDays(JSON.parse(loadedDays).dayCount + 1);
     saveDays(dateJson);
   } else {
-    const currentDate = new Date();
-    const startDate = new Date(JSON.parse(currentDays).startDate);
-    const dayCount =
-      Math.floor((currentDate - startDate) / (1000 * 3600 * 24)) + 1;
-
-    const dateJson = JSON.stringify({
-      startDate: startDate,
-      dayCount: dayCount,
-    });
-
-    paintDays(dayCount);
-    saveDays(dateJson);
+    paintDays(JSON.parse(loadedDays).dayCount);
   }
 };
 

@@ -81,11 +81,6 @@ li {
   display: none;
 }
 
-/* container */
-
-.container {
-  animation: fadeIn 4s ease-in-out;
-}
 /* form */
 .form__showing {
   display: flex;
@@ -110,14 +105,10 @@ li {
   color: var(--color-white);
   animation: fadeIn 1s ease-in-out;
 }
-.days .day {
-  animation: fadeIn 1s ease-in-out;
-}
 
 .days > span {
   animation: fadeIn 1s ease-in-out;
 }
-
 /* weather */
 .weather__container {
   position: absolute;
