@@ -8,13 +8,17 @@ const onNameSubmit = () => {
 
 const paintQuotes = (obj) => {
   const quotesContent = document.createElement('h1');
+  quotesContent.setAttribute('class', 'quotes__content');
+
   const quotesAuthor = document.createElement('span');
+  quotesAuthor.setAttribute('class', 'quotes__author');
+
   quotesContent.textContent = obj.quote;
-  quotesContent.style.fontSize = '36px';
+  // quotesContent.style.fontSize = '36px';
 
   quotesAuthor.textContent = `- ${obj.author} -`;
-  quotesAuthor.style.paddingTop = '18px';
-  quotesAuthor.style.fontSize = '24px';
+  // quotesAuthor.style.paddingTop = '18px';
+  // quotesAuthor.style.fontSize = '24px';
 
   quotes.appendChild(quotesContent);
   quotes.appendChild(quotesAuthor);

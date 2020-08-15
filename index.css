@@ -10,7 +10,7 @@
 
   /* Font size */
 
-  --font-large: 52px;
+  --font-large: 48px;
   --font-medium: 42px;
   --font-regular: 32px;
   --font-small: 18px;
@@ -171,17 +171,22 @@ li {
   color: var(--color-white);
   position: absolute;
   top: 10%;
-  animation: fadeIn 1s ease-in-out;
-  /* background: rgba(0, 0, 0, 0.3); */
 }
 
-.quotes > h1 {
+/* quotes */
+.quotes .quotes__content {
   animation: fadeIn 1s ease-in-out;
-  font-weight: 2000;
+  font-weight: var(--weight-bold);
+  font-size: var(--font-medium);
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 var(--regular-space);
 }
 
-.quotes > span {
+.quotes .quotes__author {
+  margin-top: var(--base-space);
   animation: fadeIn 1s ease-in-out;
+  transform: translateX(-80%);
 }
 
 /* todo */
