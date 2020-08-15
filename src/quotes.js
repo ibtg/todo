@@ -13,7 +13,7 @@ const paintQuotes = (obj) => {
   const quotesAuthor = document.createElement('span');
   quotesAuthor.setAttribute('class', 'quotes__author');
 
-  quotesContent.textContent = obj.quote;
+  quotesContent.textContent = `"${obj.quote}"`;
   quotesAuthor.textContent = `- ${obj.author} -`;
 
   quotes.appendChild(quotesContent);
