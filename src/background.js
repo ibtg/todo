@@ -1,15 +1,12 @@
 const backgroundImg = document.querySelector('.background');
 const BG_API_KEY = 'pwuhKpmomXVMHeUo2Hr2u2JTw8mL4XsNj9lqLI9mnNk';
-const BASE_URL = `https://api.unsplash.com/photos/random?client_id=${BG_API_KEY}&query=star`;
+const BASE_URL = `https://api.unsplash.com/photos/random?w=1920&h=1080&&client_id=${BG_API_KEY}&query=star`;
 const BG_LS = 'background';
 
 const getImages = async () => {
   const backgroundImageSrc = await fetch(BASE_URL);
   const backgroundImageJson = await backgroundImageSrc.json();
-  const backgroundImageUrl =
-    backgroundImageJson.urls.raw + '&fm=jpg&crop=entropy&w=1500&fit=max';
-
-  return backgroundImageUrl;
+  return backgroundImageJson.urls.custom;
 };
 
 const paintImage = () => {
