@@ -80,6 +80,36 @@ li {
 .background__loading {
   display: none;
 }
+/* search */
+
+.search {
+  position: absolute;
+  top: var(--regular-space);
+  left: var(--regular-space);
+}
+
+.search__icon {
+  color: var(--color-white);
+  margin-right: var(--base-space);
+  opacity: 0.5;
+  cursor: pointer;
+}
+.search .search__input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--color-white);
+  color: var(--color-white);
+  width: 250px;
+  opacity: 0;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.search__icon:hover,
+.search__input:hover {
+  opacity: 0.5;
+}
 
 /* form */
 .form__showing {
