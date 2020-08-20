@@ -1,5 +1,7 @@
 # Features
 
+- https://ibtg.github.io/todo/
+
 ## ToDo
 
 - 최대 10개 할 일을 입력받는다
@@ -32,7 +34,7 @@
 
 ## Background
 
-- [https://unsplash.com/](https://unsplash.com/) API 사요8ㅇ
+- [https://unsplash.com/](https://unsplash.com/) API 사용
 
 - 매일매일 새로운 이미지를 가져와서 화면에 표시되도록 한다
 
