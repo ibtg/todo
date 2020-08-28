@@ -1,79 +1,78 @@
-const weatherContainer = document.querySelector('.weather__container');
-const weather = weatherContainer.querySelector('.weather');
-const weatherLocation = weatherContainer.querySelector('.location');
+'use strict';
 
-const COORDS = 'coords';
-const API_KEY = 'babfdfb21b2a28a90c383505260bc2e4';
+export default class Weather {
+  constructor() {
+    this.weatherContainer = document.querySelector('.weather__container');
+    this.weather = document.querySelector('.weather');
+    this.weatherLocation = document.querySelector('.location');
+    this.COORDS = 'coords';
+    this.API_KEY = 'babfdfb21b2a28a90c383505260bc2e4';
+  }
 
-const paintWeather = (obj) => {
-  const weatherImg = document.createElement('img');
-  const weatherIcon = obj.weather[0].icon;
+  paintWeather = (obj) => {
+    const weatherImg = document.createElement('img');
+    const weatherIcon = obj.weather[0].icon;
 
-  weatherImg.setAttribute(
-    'src',
-    `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
-  );
+    weatherImg.setAttribute(
+      'src',
+      `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+    );
 
-  weatherImg.style.width = `${50}px`;
-  weatherImg.style.height = `${50}px`;
-  weatherImg.style.transform = `translateY(${12}px)`;
+    weatherImg.style.width = `${50}px`;
+    weatherImg.style.height = `${50}px`;
+    weatherImg.style.transform = `translateY(${12}px)`;
 
-  const temp = obj.main.temp;
-  const place = obj.name;
-  weather.innerText = `${temp}°C`;
-  weatherLocation.innerText = `${place}`;
-  weather.appendChild(weatherImg);
-};
-
-const getWeather = (lat, lon) => {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
-      paintWeather(json);
-    });
-};
-
-const saveCoords = (coordsObj) => {
-  localStorage.setItem(COORDS, JSON.stringify(coordsObj));
-};
-
-const handleGeoSuccess = (position) => {
-  const latitude = position.coords.latitude;
-  const longitude = position.coords.longitude;
-  const coordsObj = {
-    latitude,
-    longitude,
+    const temp = obj.main.temp;
+    const place = obj.name;
+    this.weather.innerText = `${temp}°C`;
+    this.weatherLocation.innerText = `${place}`;
+    this.weather.appendChild(weatherImg);
   };
 
-  saveCoords(coordsObj);
-  getWeather(latitude, longitude);
-};
+  getWeather = (lat, lon) => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.API_KEY}&units=metric`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        this.paintWeather(json);
+      });
+  };
 
-const handleGeoError = () => {
-  console.log(`Can't access geo location`);
-};
+  saveCoords = (coordsObj) => {
+    localStorage.setItem(COORDS, JSON.stringify(coordsObj));
+  };
 
-const askForCoords = () => {
-  navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
-};
+  handleGeoSuccess = (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const coordsObj = {
+      latitude,
+      longitude,
+    };
 
-const loadCoords = () => {
-  const loadCoords = localStorage.getItem(COORDS);
+    saveCoords(coordsObj);
+    getWeather(latitude, longitude);
+  };
 
-  if (loadCoords === null) {
-    askForCoords();
-  } else {
-    const parsedCoords = JSON.parse(loadCoords);
-    getWeather(parsedCoords.latitude, parsedCoords.longitude);
-  }
-};
+  handleGeoError = () => {
+    console.log(`Can't access geo location`);
+  };
 
-const weatherInit = () => {
-  loadCoords();
-};
+  askForCoords = () => {
+    navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
+  };
 
-weatherInit();
+  loadCoords = () => {
+    const loadCoords = localStorage.getItem(this.COORDS);
+
+    if (loadCoords === null) {
+      askForCoords();
+    } else {
+      const parsedCoords = JSON.parse(loadCoords);
+      this.getWeather(parsedCoords.latitude, parsedCoords.longitude);
+    }
+  };
+}
