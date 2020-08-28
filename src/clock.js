@@ -1,33 +1,31 @@
-const clockContainer = document.querySelector('.clock');
-const clockAMPM = clockContainer.querySelector('.clock__AMPM');
-const clockTitle = clockContainer.querySelector('.clock__time');
+'use strict';
 
-const paintTime = (hours, minutes, seconds) => {
-  hours >= 12
-    ? (clockAMPM.textContent = 'PM ')
-    : (clockAMPM.textContent = 'AM ');
+export default class Clock {
+  constructor() {
+    this.clockContainer = document.querySelector('.clock');
+    this.clockAMPM = document.querySelector('.clock__AMPM');
+    this.clockTitle = document.querySelector('.clock__time');
+  }
 
-  hours = hours % 12;
-  hours = hours ? hours : 12;
+  paintTime = () => {
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    hours >= 12
+      ? (this.clockAMPM.textContent = 'PM ')
+      : (this.clockAMPM.textContent = 'AM ');
 
-  clockTitle.innerText = `${hours < 10 ? `0${hours}` : hours}:${
-    minutes < 10 ? `0${minutes}` : minutes
-  }:${seconds < 10 ? `0${seconds}` : seconds}`;
-  clockContainer.insertBefore(clockAMPM, clockTitle);
-};
+    hours = hours % 12;
+    hours = hours ? hours : 12;
 
-const getTime = () => {
-  const date = new Date();
-  let hours = date.getHours();
-  const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
+    this.clockTitle.innerText = `${hours < 10 ? `0${hours}` : hours}:${
+      minutes < 10 ? `0${minutes}` : minutes
+    }:${seconds < 10 ? `0${seconds}` : seconds}`;
+    this.clockContainer.insertBefore(this.clockAMPM, this.clockTitle);
+  };
 
-  paintTime(hours, minutes, seconds);
-};
-
-const clockInit = () => {
-  getTime();
-  setInterval(getTime, 1000);
-};
-
-clockInit();
+  StartTime = () => {
+    setInterval(this.paintTime, 1000);
+  };
+}
