@@ -42,7 +42,7 @@ export default class Weather {
   };
 
   saveCoords = (coordsObj) => {
-    localStorage.setItem(COORDS, JSON.stringify(coordsObj));
+    localStorage.setItem(this.COORDS, JSON.stringify(coordsObj));
   };
 
   handleGeoSuccess = (position) => {
@@ -53,8 +53,8 @@ export default class Weather {
       longitude,
     };
 
-    saveCoords(coordsObj);
-    getWeather(latitude, longitude);
+    this.saveCoords(coordsObj);
+    this.getWeather(latitude, longitude);
   };
 
   handleGeoError = () => {
@@ -62,14 +62,17 @@ export default class Weather {
   };
 
   askForCoords = () => {
-    navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
+    navigator.geolocation.getCurrentPosition(
+      this.handleGeoSuccess,
+      this.handleGeoError
+    );
   };
 
   loadCoords = () => {
     const loadCoords = localStorage.getItem(this.COORDS);
 
     if (loadCoords === null) {
-      askForCoords();
+      this.askForCoords();
     } else {
       const parsedCoords = JSON.parse(loadCoords);
       this.getWeather(parsedCoords.latitude, parsedCoords.longitude);
