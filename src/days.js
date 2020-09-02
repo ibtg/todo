@@ -1,60 +1,47 @@
-import { USER_LS, userForm } from './greeting.js';
-
-const days = document.querySelector('.days');
-const day = days.querySelector('.day');
-const DAYS_LS = 'days';
-
-const onNameSubmit = () => {
-  userForm.addEventListener('submit', () => {
-    getUser();
-    getDays();
-  });
-};
-
-const getUser = () => {
-  const userName = localStorage.getItem(USER_LS);
-  if (userName !== null) {
-    const user = document.createElement('span');
-    user.textContent = `${userName}, today is `;
-    days.insertBefore(user, day);
+export default class Days {
+  constructor() {
+    this.days = document.querySelector('.days');
+    this.day = document.querySelector('.day');
+    this.DAYS_LS = 'days';
+    this.USER_LS = 'currentUser';
   }
-};
 
-const saveDays = (date) => {
-  localStorage.setItem(DAYS_LS, date);
-};
+  saveDays = (date) => {
+    localStorage.setItem(this.DAYS_LS, date);
+  };
 
-const paintDays = (dayCount) => {
-  day.textContent = `Day ${dayCount}`;
-};
+  paintDays = (dayCount) => {
+    this.day.textContent = `Day ${dayCount}`;
+  };
 
-const getDays = () => {
-  const loadedDays = localStorage.getItem(DAYS_LS);
-  const today = new Date().getDay();
+  getDays = () => {
+    const loadedDays = localStorage.getItem(this.DAYS_LS);
+    const today = new Date().getDay();
 
-  if (loadedDays === null) {
-    const dateJson = JSON.stringify({ dayId: today, dayCount: 1 });
-    paintDays(1);
-    saveDays(dateJson);
-  } else if (JSON.parse(loadedDays).dayId !== today) {
-    const dateJson = JSON.stringify({
-      dayId: today,
-      dayCount: JSON.parse(loadedDays).dayCount + 1,
-    });
-    paintDays(JSON.parse(loadedDays).dayCount + 1);
-    saveDays(dateJson);
-  } else {
-    paintDays(JSON.parse(loadedDays).dayCount);
-  }
-};
+    if (loadedDays === null) {
+      const dateJson = JSON.stringify({ dayId: today, dayCount: 1 });
+      this.paintDays(1);
+      this.saveDays(dateJson);
+    } else if (JSON.parse(loadedDays).dayId !== today) {
+      const dateJson = JSON.stringify({
+        dayId: today,
+        dayCount: JSON.parse(loadedDays).dayCount + 1,
+      });
+      this.paintDays(JSON.parse(loadedDays).dayCount + 1);
+      this.saveDays(dateJson);
+    } else {
+      this.paintDays(JSON.parse(loadedDays).dayCount);
+    }
+  };
 
-const daysInit = () => {
-  const userName = localStorage.getItem(USER_LS);
-  if (userName !== null) {
-    getUser();
-    getDays();
-  }
-  onNameSubmit();
-};
+  getUser = () => {
+    const userName = localStorage.getItem(this.USER_LS);
+    if (userName !== null) {
+      const user = document.createElement('span');
+      user.textContent = `${userName}, today is `;
+      this.days.insertBefore(user, this.day);
 
-daysInit();
+      this.getDays();
+    }
+  };
+}
