@@ -1,39 +1,60 @@
-const backgroundImg = document.querySelector('.background');
-const BG_API_KEY = 'pwuhKpmomXVMHeUo2Hr2u2JTw8mL4XsNj9lqLI9mnNk';
-const BASE_URL = `https://api.unsplash.com/photos/random?w=1920&h=1080&&client_id=${BG_API_KEY}&query=star`;
-const BG_LS = 'background';
+'use strict';
 
-const getImages = async () => {
-  const backgroundImageSrc = await fetch(BASE_URL);
-  const backgroundImageJson = await backgroundImageSrc.json();
-  return backgroundImageJson.urls.custom;
-};
-
-const paintImage = () => {
-  const backgroundImageLS = localStorage.getItem(BG_LS);
-  const parsedImageLS = JSON.parse(backgroundImageLS).ImageUrl;
-  backgroundImg.style.backgroundImage = 'url(' + parsedImageLS + ')';
-  backgroundImg.classList.remove('background__loading');
-};
-
-const initBackground = () => {
-  const backgroundImageLS = localStorage.getItem(BG_LS);
-  const today = new Date().getDay();
-
-  if (
-    backgroundImageLS === null ||
-    today !== JSON.parse(backgroundImageLS).day
-  ) {
-    getImages().then((ImageUrl) => {
-      localStorage.setItem(
-        BG_LS,
-        JSON.stringify({ day: today, ImageUrl: ImageUrl })
-      );
-      paintImage();
-    });
-  } else {
-    paintImage();
+export default class Background {
+  constructor() {
+    this.backgroundImg = document.querySelector('.background');
+    this.BG_API_KEY = 'pwuhKpmomXVMHeUo2Hr2u2JTw8mL4XsNj9lqLI9mnNk';
+    this.BASE_URL = `https://api.unsplash.com/photos/random?w=1920&h=1080&&client_id=${this.BG_API_KEY}&query=star`;
+    this.BG_LS = 'background';
+    this.today = new Date().getDay();
   }
-};
 
-initBackground();
+  saveBackground = (day, todayImageUrl, nextdayImageUrl) => {
+    localStorage.setItem(
+      this.BG_LS,
+      JSON.stringify({
+        day: day,
+        todayImageUrl: todayImageUrl,
+        nextdayImageUrl: nextdayImageUrl,
+      })
+    );
+  };
+
+  getBackground = async () => {
+    const backgroundImageSrc = await fetch(this.BASE_URL);
+    const backgroundImageJson = await backgroundImageSrc.json();
+    return backgroundImageJson.urls.custom;
+  };
+
+  paintBackground = (backgroundImageLS) => {
+    this.backgroundImg.style.backgroundImage = 'url(' + backgroundImageLS + ')';
+  };
+
+  loadBackground = () => {
+    const backgroundImageLS = localStorage.getItem(this.BG_LS);
+
+    console.log(backgroundImageLS);
+
+    if (backgroundImageLS === null) {
+      this.getBackground().then((imageUrl) => {
+        this.saveBackground(
+          this.today,
+          './images/basic-background.jpeg',
+          imageUrl
+        );
+      });
+    } else if (this.today !== JSON.parse(backgroundImageLS).day) {
+      console.log('else if');
+      this.paintBackground(JSON.parse(backgroundImageLS).nextdayImageUrl);
+      this.getBackground().then((imageUrl) => {
+        this.saveBackground(
+          this.today,
+          JSON.parse(backgroundImageLS).nextdayImageUrl,
+          imageUrl
+        );
+      });
+    } else {
+      this.paintBackground(JSON.parse(backgroundImageLS).todayImageUrl);
+    }
+  };
+}

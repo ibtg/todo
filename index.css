@@ -75,12 +75,8 @@ li {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background: url('./images/basic-background.jpeg');
 }
-
-.background__loading {
-  display: none;
-}
-/* search */
 
 .search {
   position: absolute;

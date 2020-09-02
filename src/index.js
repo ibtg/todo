@@ -6,6 +6,7 @@ import Greeting from './greeting.js';
 import Quotes from './quotes.js';
 import Todo from './todo.js';
 import Days from './days.js';
+import Background from './background.js';
 
 const SHOWING_ON = 'form__showing';
 
@@ -17,6 +18,9 @@ weather.loadCoords();
 
 const greeting = new Greeting();
 greeting.loadName();
+
+const background = new Background();
+background.loadBackground();
 
 greeting.userForm.addEventListener('submit', () => {
   const quotes = new Quotes();
