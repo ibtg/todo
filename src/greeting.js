@@ -1,38 +1,34 @@
-const userForm = document.querySelector('.user__form');
-const userInput = userForm.querySelector('input');
-const USER_LS = 'currentUser';
-const SHOWING_ON = 'form__showing';
+'use strict';
 
-const saveName = (text) => {
-  localStorage.setItem(USER_LS, text);
-};
-
-const onNameSubmit = (event) => {
-  event.preventDefault();
-  const currentvalue = userInput.value;
-  userForm.classList.remove(SHOWING_ON);
-
-  saveName(currentvalue);
-};
-
-const askForName = () => {
-  userForm.classList.add(SHOWING_ON);
-  userForm.addEventListener('submit', onNameSubmit);
-};
-
-const loadName = () => {
-  const currentUser = localStorage.getItem(USER_LS);
-  if (currentUser === null) {
-    askForName();
-  } else {
-    userForm.classList.remove(SHOWING_ON);
+export default class Greeting {
+  constructor() {
+    this.userForm = document.querySelector('.user__form');
+    this.userInput = document.querySelector('.user__input');
+    this.USER_LS = 'currentUser';
+    this.SHOWING_ON = 'form__showing';
   }
-};
+  saveName = (text) => {
+    localStorage.setItem(this.USER_LS, text);
+  };
 
-const greetingInit = () => {
-  loadName();
-};
+  onNameSubmit = (event) => {
+    event.preventDefault();
+    const currentvalue = this.userInput.value;
+    this.userForm.classList.remove(this.SHOWING_ON);
+    this.saveName(currentvalue);
+  };
 
-greetingInit();
+  askForName = () => {
+    this.userForm.classList.add(this.SHOWING_ON);
+    this.userForm.addEventListener('submit', this.onNameSubmit);
+  };
 
-export { USER_LS, userForm, SHOWING_ON };
+  loadName = () => {
+    const currentUser = localStorage.getItem(this.USER_LS);
+    if (currentUser === null) {
+      this.askForName();
+    } else {
+      this.userForm.classList.remove(this.SHOWING_ON);
+    }
+  };
+}
