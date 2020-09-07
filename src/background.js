@@ -33,8 +33,6 @@ export default class Background {
   loadBackground = () => {
     const backgroundImageLS = localStorage.getItem(this.BG_LS);
 
-    console.log(backgroundImageLS);
-
     if (backgroundImageLS === null) {
       this.getBackground().then((imageUrl) => {
         this.saveBackground(
@@ -44,7 +42,6 @@ export default class Background {
         );
       });
     } else if (this.today !== JSON.parse(backgroundImageLS).day) {
-      console.log('else if');
       this.paintBackground(JSON.parse(backgroundImageLS).nextdayImageUrl);
       this.getBackground().then((imageUrl) => {
         this.saveBackground(
