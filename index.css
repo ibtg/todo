@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* Global */
 
 :root {
@@ -177,7 +179,7 @@ li {
   animation: fadeIn 1s ease-in-out;
 }
 
-.user__form > input {
+.user__form .user__input {
   border: none;
   outline: none;
   border-bottom: 1px solid var(--color-white);
@@ -267,7 +269,6 @@ li {
 
 .todo__lists .todo__item:hover {
   transform: scale(1.01);
-  /* background: rgba(245, 245, 245, 0.3); */
 }
 
 .todo__lists .todo__item > button {
@@ -285,6 +286,7 @@ li {
 
 .todo__lists .todo__item .todo__check:hover {
   transform: scale(1.3);
+  cursor: pointer;
 }
 
 .todo__lists .todo__item .todo__delete:hover {
@@ -292,6 +294,7 @@ li {
   color: var(--color-white);
   border-radius: 50%;
   transform: scale(1.3);
+  cursor: pointer;
 }
 
 @keyframes fadeIn {
