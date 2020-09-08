@@ -230,7 +230,7 @@ li {
 
 .todo {
   position: absolute;
-  bottom: 5%;
+  top: 35%;
   animation: fadeIn 1s ease-in-out;
 }
 
