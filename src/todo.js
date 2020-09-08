@@ -94,7 +94,6 @@ export default class Todo {
   onHandleSubmit = (event) => {
     event.preventDefault();
 
-    console.log('submit: ', event);
     if (this.todos.length < 10) {
       const currentValue = this.todoInput.value;
       this.paintTodo(currentValue);
