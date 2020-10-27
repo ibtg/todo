@@ -6,9 +6,11 @@ import Greeting from './greeting.js';
 import Quotes from './quotes.js';
 import Todo from './todo.js';
 import Days from './days.js';
-import Background from './background.js';
+// import Background from './background.js';
 
 const SHOWING_ON = 'form__showing';
+const GOAL = 'goal';
+const DOING = 'doing'
 
 const clock = new Clock();
 clock.StartTime();
@@ -16,30 +18,43 @@ clock.StartTime();
 const weather = new Weather();
 weather.loadCoords();
 
-const greeting = new Greeting();
-greeting.loadName();
+// const greeting = new Greeting();
+// greeting.loadName();
 
-const background = new Background();
-background.loadBackground();
+// const background = new Background();
+// background.loadBackground();
 
-greeting.userForm.addEventListener('submit', () => {
-  const quotes = new Quotes();
-  quotes.getQuotes();
+// greeting.userForm.addEventListener('submit', () => {
+//   const quotes = new Quotes();
+//   quotes.getQuotes();
 
-  const todo = new Todo(SHOWING_ON);
-  todo.loadTodos();
+//   const goal = new Todo(SHOWING_ON, 'GOAL');
+//   const doing = new Todo(SHOWING_ON, 'DOING');
+//   const todo = new Todo(SHOWING_ON, 'TODO');
+//   const done = new Todo(SHOWING_ON, 'DONE');
 
-  const days = new Days();
-  days.getUser();
-});
+//   goal.loadTodos();
+//   doing.loadTodos();
+//   todo.loadTodos();
+//   done.loadTodos();
 
-if (localStorage.getItem(greeting.USER_LS)) {
-  const quotes = new Quotes();
-  quotes.getQuotes();
+//   const days = new Days();
+//   days.getUser();
+// });
+// const quotes = new Quotes();
+// quotes.getQuotes();
 
-  const todo = new Todo(SHOWING_ON);
-  todo.loadTodos();
+const goal = new Todo(SHOWING_ON, '.item__goal');
+const doing = new Todo(SHOWING_ON, '.item__doing');
+const todo = new Todo(SHOWING_ON, '.item__todo');
+const done = new Todo(SHOWING_ON, '.item__done');
 
-  const days = new Days();
-  days.getUser();
-}
+goal.loadTodos();
+doing.loadTodos();
+todo.loadTodos();
+done.loadTodos();
+
+
+const days = new Days();
+days.getUser();
+

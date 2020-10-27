@@ -1,19 +1,26 @@
 'user strict';
 
 export default class Todo {
-  constructor(showing) {
-    this.todo = document.querySelector('.todo');
-    this.todoForm = document.querySelector('.todo__form');
-    this.todoInput = document.querySelector('.todo__input');
-    this.todoList = document.querySelector('.todo__lists');
-    this.TODOS_LS = 'toDos';
+  constructor(showing, category) {
+    console.log("this todo: ", category)
+
+    this.todo = document.querySelector(category);
+    this.todoForm = this.todo.querySelector('.todo__form');
+    this.todoInput = this.todoForm.querySelector('.todo__input');
+    this.todoList = this.todo.querySelector('.todo__list');
+    this.TODOS_LS = category;
     this.todos = [];
     this.showing = showing;
 
+    console.log(this.todoForm)
+
     this.todoForm.addEventListener('submit', (event) => {
+      console.log("todos", category)
       this.onHandleSubmit(event);
     });
   }
+
+  
 
   saveTodos = (todos) => {
     localStorage.setItem(this.TODOS_LS, JSON.stringify(todos));

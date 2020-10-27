@@ -36,19 +36,46 @@
       <!-- user -->
       <div class="user">
         <!-- user name input -->
-        <form class="user__form" action="">
+        <!-- <form class="user__form" action="">
           <span>Hello, what is your name ?</span>
           <input class="user__input" type="text" placeholder="" />
-        </form>
+        </form> -->
 
         <div class="quotes"></div>
 
         <!-- for todo list input -->
         <div class="todo">
-          <form action="" class="todo__form">
-            <input class="todo__input" type="text" />
-          </form>
-          <ul class="todo__lists"></ul>
+          <ul class="todo__container">
+            <li class="todo__lists item__goal">
+              <h3 class="list__title title__goal">Goal</h3>
+              <ul class="todo__list"></ul>
+              <form action="" class="todo__form">
+                <input class="todo__input" type="text" placeholder="+ New" />
+              </form>
+            </li>
+            <li class="todo__lists item__doing">
+              <h3 class="list__title title__doing">Doing</h3>
+              <ul class="todo__list"></ul>
+              <form action="" class="todo__form">
+                <input class="todo__input" type="text" placeholder="+ New" />
+              </form>
+            </li>
+            <li class="todo__lists item__todo">
+              <h3 class="list__title title__todo">To Do</h3>
+              <ul class="todo__list"></ul>
+              <form action="" class="todo__form">
+                <input class="todo__input" type="text" placeholder="+ New" />
+              </form>
+            </li>
+            <li class="todo__lists item__done">
+              <h3 class="list__title title__done">Done</h3>
+              <ul class="todo__list"></ul>
+              <form action="" class="todo__form">
+                <input class="todo__input" type="text" placeholder="+ New" />
+              </form>
+            </li>
+          </ul>
+
         </div>
       </div>
     </div>
