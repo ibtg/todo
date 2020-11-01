@@ -7,7 +7,6 @@
 
   --color-background: #ffebcd;
   --color-white: #ffffff;
-  --color-black: #000000;
   --color-dary-gray: #37352f;
   --color-grey: #616161;
   --color-light-grey: #f8f9fa;
@@ -17,12 +16,9 @@
   --color-right-green: rgba(0, 135, 107, 0.2);
 
   /* Font size */
-
-  --font-large: 48px;
   --font-medium: 42px;
   --font-regular: 32px;
   --font-small: 18px;
-  --font-micro: 12px;
 
   /* Font weight */
 
@@ -38,10 +34,6 @@
   --regular-space: 18px;
   --base-space: 8px;
   --small-space: 12px;
-  --tiny--space: 2px;
-
-  /* Animation */
-  --animation-duration: 300ms;
 }
 
 /* Universal tags */
@@ -85,7 +77,8 @@ li {
 .background {
   background-color: var(--color-background);
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  position: relative;
 }
 
 /* header */
@@ -110,7 +103,7 @@ li {
   background-color: transparent;
   border: none;
   outline: none;
-  border-bottom: 2px solid #37352f;
+  border-bottom: 2px solid var(--color-dary-gray);
   color: var(--color-dary-gray);
   width: 250px;
   cursor: pointer;
@@ -135,14 +128,12 @@ li {
   font-size: var(--font-regular);
   margin-right: var(--regular-space);
   color: var(--color-dary-gray);
-  animation: fadeIn 1s ease-in-out;
 }
 
 /* user */
 
 /* user name form */
 .user {
-  /* min-width: 1200px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -303,5 +294,29 @@ li {
   }
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    height: 100vh;
+  }
+  .quotes {
+    margin: 20px 0;
+  }
+  .todo__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .todo__lists {
+    margin-left: 0;
+    margin-bottom: var(--medium-space);
+  }
+
+  .footer {
+    /* bottom: var(--regular-space); */
+    position: relative;
+    padding-bottom: var(--regular-space);
   }
 }
