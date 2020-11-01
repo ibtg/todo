@@ -21,6 +21,9 @@ weather.loadCoords();
 const quotes = new Quotes();
 quotes.getQuotes();
 
+  const days = new Days();
+  days.getDays();
+
 // const greeting = new Greeting();
 // greeting.loadName();
 
@@ -40,8 +43,7 @@ quotes.getQuotes();
 //   todo.loadTodos();
 //   done.loadTodos();
 
-//   const days = new Days();
-//   days.getUser();
+
 // });
 // const quotes = new Quotes();
 // quotes.getQuotes();
@@ -56,7 +58,4 @@ doing.loadTodos();
 todo.loadTodos();
 done.loadTodos();
 
-
-const days = new Days();
-days.getUser();
 

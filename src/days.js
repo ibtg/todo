@@ -34,14 +34,4 @@ export default class Days {
     }
   };
 
-  getUser = () => {
-    const userName = localStorage.getItem(this.USER_LS);
-    if (userName !== null) {
-      const user = document.createElement('span');
-      user.textContent = `${userName}, today is `;
-      this.days.insertBefore(user, this.day);
-
-      this.getDays();
-    }
-  };
 }

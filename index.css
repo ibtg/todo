@@ -177,6 +177,12 @@ li {
   height: 100vh;
 }
 
+.user__form {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
 .user__form > span {
   font-size: var(--font-large);
   color: var(--color-white);
@@ -188,7 +194,7 @@ li {
   outline: none;
   border-bottom: 1px solid var(--color-white);
   margin-top: var(--medium-space);
-  font-size: var(--font-medium);
+  font-size: var(--font-small);
   background-color: transparent;
   color: var(--color-white);
   text-align: center;
