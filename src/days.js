@@ -1,9 +1,7 @@
 export default class Days {
   constructor() {
-    this.days = document.querySelector('.days');
     this.day = document.querySelector('.day');
     this.DAYS_LS = 'days';
-    this.USER_LS = 'currentUser';
   }
 
   saveDays = (date) => {

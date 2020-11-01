@@ -17,31 +17,20 @@
   </head>
   <body>
     <div class="background">
-      <form class="search" action="http://google.com/search" target="_blank">
-        <span class="search__icon"><i class="fas fa-search"></i></span>
-        <input class="search__input" name="q" />
-      </form>
-      <div class="clock">
-        <span class="clock__AMPM">AMPM</span>
-        <span class="clock__time">00:00</span>
-      </div>
 
-      <div class="weather__container">
-        <div class="weather">wheather</div>
-        <div class="location">location</div>
-      </div>
+      <!-- header -->
+      <header class="header">
+        <form class="search" action="http://google.com/search" target="_blank">
+          <span class="search__icon"><i class="fas fa-search"></i></span>
+          <input class="search__input" name="q" />
+        </form>
+        <div class="day"></div>
+      </header>
 
       <!-- user -->
       <div class="user">
         <!-- user name input -->
-        <form class="user__form" action="">
-          <span class="user__f">Hello, what is your name ?</span>
-          <input class="user__input" type="text" placeholder="Enter your name" />
-        </form>
-        <div class="days">
-          <span class="day"></span>
-        </div>
-
+          
         <div class="quotes"></div>
 
         <!-- for todo list input -->
@@ -79,6 +68,20 @@
 
         </div>
       </div>
+
+      <!-- footer -->
+      <footer class="footer">
+        <div class="weather__container">
+          <div class="weather">wheather</div>
+          <div class="location">location</div>
+        </div>
+
+        <div class="clock">
+          <span class="clock__AMPM">AMPM</span>
+          <span class="clock__time">00:00</span>
+        </div>
+      </footer>
+
     </div>
   </body>
 </html>
