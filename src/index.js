@@ -18,6 +18,9 @@ clock.StartTime();
 const weather = new Weather();
 weather.loadCoords();
 
+const quotes = new Quotes();
+quotes.getQuotes();
+
 // const greeting = new Greeting();
 // greeting.loadName();
 
@@ -25,8 +28,7 @@ weather.loadCoords();
 // background.loadBackground();
 
 // greeting.userForm.addEventListener('submit', () => {
-//   const quotes = new Quotes();
-//   quotes.getQuotes();
+
 
 //   const goal = new Todo(SHOWING_ON, 'GOAL');
 //   const doing = new Todo(SHOWING_ON, 'DOING');
@@ -44,10 +46,10 @@ weather.loadCoords();
 // const quotes = new Quotes();
 // quotes.getQuotes();
 
-const goal = new Todo(SHOWING_ON, '.item__goal');
-const doing = new Todo(SHOWING_ON, '.item__doing');
-const todo = new Todo(SHOWING_ON, '.item__todo');
-const done = new Todo(SHOWING_ON, '.item__done');
+const goal = new Todo('.item__goal');
+const doing = new Todo('.item__doing');
+const todo = new Todo('.item__todo');
+const done = new Todo('.item__done');
 
 goal.loadTodos();
 doing.loadTodos();

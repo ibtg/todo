@@ -1,26 +1,18 @@
 'user strict';
 
 export default class Todo {
-  constructor(showing, category) {
-    console.log("this todo: ", category)
-
+  constructor(category) {
     this.todo = document.querySelector(category);
     this.todoForm = this.todo.querySelector('.todo__form');
     this.todoInput = this.todoForm.querySelector('.todo__input');
     this.todoList = this.todo.querySelector('.todo__list');
     this.TODOS_LS = category;
     this.todos = [];
-    this.showing = showing;
-
-    console.log(this.todoForm)
-
     this.todoForm.addEventListener('submit', (event) => {
-      console.log("todos", category)
       this.onHandleSubmit(event);
     });
-  }
 
-  
+  }
 
   saveTodos = (todos) => {
     localStorage.setItem(this.TODOS_LS, JSON.stringify(todos));
@@ -48,6 +40,11 @@ export default class Todo {
     const cleanTodos = this.todos.filter((todo) => {
       return todo.id !== parseInt(li.id);
     });
+
+    if(this.todoList.childElementCount < 10){
+      this.todoForm.style.display ='flex'
+    }
+    
 
     this.todos = cleanTodos;
     this.saveTodos(this.todos);
@@ -84,7 +81,6 @@ export default class Todo {
     li.appendChild(check);
     li.appendChild(span);
     li.appendChild(delBtn);
-    li.scrollIntoView({ block: 'center' });
 
     li.id = newId;
 
@@ -96,6 +92,9 @@ export default class Todo {
 
     this.todos.push(todoObj);
     this.saveTodos(this.todos);
+    if(this.todoList.childElementCount >= 10){
+      this.todoForm.style.display ='none'
+    }
   };
 
   onHandleSubmit = (event) => {
@@ -104,6 +103,7 @@ export default class Todo {
     if (this.todos.length < 10) {
       const currentValue = this.todoInput.value;
       this.paintTodo(currentValue);
+    }else{
     }
 
     this.todoInput.value = '';
@@ -111,8 +111,6 @@ export default class Todo {
   };
 
   loadTodos = () => {
-    this.todoForm.classList.add(this.showing);
-    this.todo.classList.add(this.showing);
     const loadedTodos = localStorage.getItem(this.TODOS_LS);
     const parsedTodos = JSON.parse(loadedTodos);
 

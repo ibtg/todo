@@ -110,18 +110,19 @@ li {
   transition: all 0.3s ease-in;
   font-size: var(--font-small);
   padding: 2px;
+  opacity: 0;
 }
 
-/* .search__icon:hover + .search__input {
+.search__icon:hover + .search__input {
   opacity: 0.5;
-} */
+}
 
-/* .search__input:hover {
+.search__input:hover {
   opacity: 0.5;
 }
 .search__input:focus {
   opacity: 1;
-} */
+}
 
 /* form */
 .form__showing {
@@ -135,7 +136,7 @@ li {
   bottom: 10px;
   right: 20px;
   color: #555;
-  font-size: var(--font-medium);
+  font-size: 32px;
 }
 
 /* days */
@@ -159,12 +160,9 @@ li {
   color: #37352f;
 }
 
-.weather {
-  font-size: var(--font-regular);
-}
-
+.weather,
 .location {
-  font-size: var(--font-small);
+  font-size: 20px;
 }
 
 /* user */
@@ -208,34 +206,34 @@ li {
 .quotes {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  max-width: 980px;
-  margin: 0 auto;
-  color: var(--color-white);
-  position: absolute;
-  top: 10%;
+  align-items: center;
+  flex-wrap: wrap;
+  /* max-width: 980px; */
+  /* margin: 0 auto; */
+  color: #35372f;
+  /* position: absolute; */
+  /* top: 10%; */
+  margin: 20px 0;
 }
 
 /* quotes */
 .quotes .quotes__content {
-  animation: fadeIn 1s ease-in-out;
   font-weight: var(--weight-bold);
-  font-size: var(--font-medium);
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 var(--regular-space);
+  font-size: 18px;
+  /* display: flex;
+  justify-content: flex-end; */
+  /* padding: 0 var(--regular-space); */
 }
 
 .quotes .quotes__author {
   margin-top: var(--base-space);
-  animation: fadeIn 1s ease-in-out;
-  transform: translateX(-80%);
 }
 
 /* todo */
 
 .todo {
-  animation: fadeIn 1s ease-in-out;
+  /* position: absolute;
+  top: 20%; */
 }
 
 .todo__container {
@@ -244,7 +242,9 @@ li {
 
 /* todo__lists */
 
-.todo__lists {
+.item__doing,
+.item__todo,
+.item__done {
   margin-left: 12px;
 }
 
@@ -257,11 +257,8 @@ li {
   background-color: white;
   padding: 8px 10px 10px;
   margin-bottom: var(--base-space);
-  border-radius: 4px;
-  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
-    rgba(15, 15, 15, 0.1) 0px 2px 4px;
   color: rgb(55, 53, 47);
-  border: 1px solid #c0c0c0;
+
   width: 260px;
   height: 40px;
   color: rgb(55, 53, 47);
@@ -272,8 +269,18 @@ li {
   background-color: #f8f9fa;
   cursor: pointer;
 }
+
+.todo__lists .todo__item {
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
+    rgba(15, 15, 15, 0.1) 0px 2px 4px;
+}
 .todo__lists .todo__input {
   font-weight: 600;
+  border-radius: 4px;
+  background-color: transparent;
+  border: none;
 }
 
 .todo__lists .list__title {
