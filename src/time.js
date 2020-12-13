@@ -1,14 +1,30 @@
 'use strict';
 
-export default class Clock {
+export default class Time {
   constructor() {
     this.clockContainer = document.querySelector('.clock');
     this.clockAMPM = document.querySelector('.clock__AMPM');
     this.clockTitle = document.querySelector('.clock__time');
+    this.date = document.querySelector('.date')
+    
+    this.monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+    this.weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   }
+
+
+  getDate = () =>{
+    const date = new Date();
+    const Month = date.getMonth();
+    const day = date.getDate();
+    const daysOfWeek = date.getDay()
+    this.date.innerText = `${this.weekNames[daysOfWeek]}, ${this.monthNames[Month]} ${day}`
+  }
+
 
   paintTime = () => {
     const date = new Date();
+
     let hours = date.getHours();
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
@@ -27,5 +43,6 @@ export default class Clock {
 
   StartTime = () => {
     setInterval(this.paintTime, 1000);
+    this.getDate()
   };
 }

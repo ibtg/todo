@@ -1,6 +1,6 @@
 'user strict';
 
-import Clock from './clock.js';
+import Time from './time.js';
 import Weather from './weather.js';
 import Quotes from './quotes.js';
 import Todo from './todo.js';
@@ -20,12 +20,9 @@ darkmodeCheckbox.addEventListener('change', ()=>{
 
 })
 
-// c = document.querySelector('.day');
-// print("C: ", c)
 
-
-const clock = new Clock();
-clock.StartTime();
+const time = new Time();
+time.StartTime();
 
 const weather = new Weather();
 weather.loadCoords();
