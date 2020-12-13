@@ -107,10 +107,11 @@ li {
 
 .search {
   margin-left: var(--regular-space);
+  color: var(--color-dary-gray);
 }
 
 .search__icon {
-  color: var(--color-dary-gray);
+  /* color: var(--color-dary-gray); */
   margin-right: var(--base-space);
   cursor: pointer;
 }
@@ -120,10 +121,10 @@ li {
   border: none;
   outline: none;
   border-bottom: 2px solid var(--color-dary-gray);
-  color: var(--color-dary-gray);
+
   width: 250px;
   cursor: pointer;
-  /* transition: all 0.3s ease-in; */
+  transition: all 0.3s ease-in;
   font-size: var(--font-small);
   opacity: 0;
 }
@@ -188,12 +189,8 @@ li {
   color: #f39c12;
 }
 
-.day.darkmode__fontcolor,
-.clock.darkmode__fontcolor,
-.weather__container.darkmode__fontcolor,
-.quotes.darkmode__fontcolor,
-.search__icon.darkmode__fontcolor,
-.list__title.darkmode__fontcolor {
+.list__title.darkmode__fontcolor,
+.darkmode__fontcolor {
   color: var(--color-white);
 }
 
@@ -245,7 +242,7 @@ li {
   margin-left: 12px;
 }
 
-.todo__category .todo__input,
+.todo__input,
 .todo__item {
   font-size: 14px;
   /* animation: fadeIn 0.5s ease-in-out; */
@@ -269,7 +266,6 @@ li {
 
 .todo__form .todo__input:focus {
   background-color: var(--color-light-grey);
-  /* background-color: red; */
 }
 
 .todo__category .todo__item {
@@ -315,7 +311,6 @@ li {
 /* todo list */
 
 .todo__list {
-  /* padding: 8px; */
   margin-bottom: 12px;
 }
 

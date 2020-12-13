@@ -1,3 +1,5 @@
+'use strict';
+
 export default class Days {
   constructor() {
     this.day = document.querySelector('.day');
