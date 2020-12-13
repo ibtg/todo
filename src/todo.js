@@ -16,18 +16,16 @@ export default class Todo {
 
 
     this.todoInput.addEventListener('focusout', (event)=>{
+      
+      if(event.currentTarget.value === '' ){
+        this.todoInput.classList.add('todo__inputUnCheck')
+        this.todoInput.classList.remove('todo__inputCheck')
 
-
-      if(event.currentTarget.value !== '' ){
-        event.currentTarget.style.backgroundColor = '#f8f9fa';
       }else{
-        event.currentTarget.style.backgroundColor = 'transparent';
+        this.todoInput.classList.add('todo__inputCheck')
+        this.todoInput.classList.remove('todo__inputUnCheck')
 
       }
-      // console.log("todoInput: ", event.currentTarget.style.backgrounColor=)
-
-      
-      // event.currentTarget.style.backgroundColor ='red'
     })
 
 
@@ -49,15 +47,9 @@ export default class Todo {
     const getDragAfterElement = (y) => {
       
       const draggableElements = [...this.todo.querySelectorAll('.draggable:not(.dragging)')]
-      // console.log(draggableElements)
 
       return draggableElements.reduce((closest, child)=>{
-        const box = child.getBoundingClientRect();
-        // console.log("box : ", box.top - box.height/2)
-        // console.log("y: ", y)
         const offset = y - box.top - box.height/2 
-        // console.log('offset: ', offset)
-        // console.log('closet: ', closest)
 
         if(offset<0 && offset>closest.offset){
           return {offset: offset, element:child}
@@ -66,8 +58,6 @@ export default class Todo {
         }
       }, {offset: Number.NEGATIVE_INFINITY}).element
     }
-
-    // 저장하는 logic
 
   }
 
@@ -81,6 +71,7 @@ export default class Todo {
     const unchecked = btn.classList.toggle('unchecked');
     const li = btn.parentNode;
 
+    // add save function after checked
     if (!unchecked) {
       btn.innerHTML = '<i class="far fa-check-square"></i>';
       li.style.textDecoration = 'line-through';
@@ -118,10 +109,6 @@ export default class Todo {
     li.setAttribute('draggable', true);
     li.classList.add('todo__item', 'draggable');
 
-    // li.addEventListener('click', (event)=>{
-    //   console.log(event.currentTarget.value)
-    // })
-
     // for drag and drop
     li.addEventListener('dragstart', ()=>{
       li.classList.add('dragging')
@@ -131,34 +118,22 @@ export default class Todo {
       li.classList.remove('dragging')
       const categories = document.querySelectorAll('.todo__category')
 
-      // drag 끝나면 변경사항을 local storage에 저장한다 
-
-      // 모든 카테고리에 대해서 
+      // after dragend, save every changes of category to local storage모
       categories.forEach(category => {
         const newTodos = [];
 
         const categoryText = category.className.split(' ')[1]
-        console.log("category: ", categoryText)
-
-        // console.log(this.TODOS_LS)
         const todoList = category.querySelector('.todo__list').querySelectorAll('.todo__item')
-        // console.log("todoList: ", todoList.querySelectorAll('.todo__item'))
+
 
         todoList.forEach(item => {
-          // console.log("item: id", item.id)
-          // console.log("item: text", item.querySelector('span').textContent)
           newTodos.push({'id': item.id, 'text':item.querySelector('span').textContent})
         })
 
-        
-        console.log("newTodos: ", newTodos)
-        console.log("save")
         this.saveTodos(categoryText, newTodos)
 
       })
 
-      // saveTodos = (category, todos)
-      
       
     })
 

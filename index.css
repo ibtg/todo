@@ -245,16 +245,20 @@ li {
 .todo__input,
 .todo__item {
   font-size: 14px;
-  /* animation: fadeIn 0.5s ease-in-out; */
+  animation: fadeIn 0.5s ease-in-out;
   display: flex;
   align-items: center;
-  background-color: var(--color-white);
+
   padding: 4px 8px 4px 8px;
   margin-bottom: var(--tiny-space);
   color: var(--color-dary-gray);
   width: 260px;
   height: 50px;
   color: var(--color-dary-gray);
+}
+
+.todo__item {
+  background-color: var(--color-white);
 }
 
 .todo__category .todo__input:hover,
@@ -274,12 +278,23 @@ li {
   box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
     rgba(15, 15, 15, 0.1) 0px 2px 4px;
 }
-.todo__category .todo__input {
+
+/* todo__input */
+
+.todo__input {
   font-weight: var(--weight-semi-bold);
   border-radius: var(--size-border-radius);
-  background-color: transparent;
+
   border: none;
   margin-right: 0;
+}
+
+.todo__inputCheck {
+  background-color: #f8f9fa;
+}
+
+.todo__inputUnCheck {
+  background-color: transparent;
 }
 
 .list__title {
