@@ -10,17 +10,29 @@ export default class Todo {
     this.todos = [];
 
 
-
     this.todoForm.addEventListener('submit', (event) => {
       this.onHandleSubmit(event);
     });
 
 
+    this.todoInput.addEventListener('focusout', (event)=>{
+
+
+      if(event.currentTarget.value !== '' ){
+        event.currentTarget.style.backgroundColor = '#f8f9fa';
+      }else{
+        event.currentTarget.style.backgroundColor = 'transparent';
+
+      }
+      // console.log("todoInput: ", event.currentTarget.style.backgrounColor=)
+
+      
+      // event.currentTarget.style.backgroundColor ='red'
+    })
 
 
     this.todoList.addEventListener('dragover', (event)=>{
       event.preventDefault()
-      // console.log('dragover')
       const afterElement = getDragAfterElement(event.clientY)
 
       const dragging = document.querySelector('.dragging')
@@ -32,15 +44,6 @@ export default class Todo {
         this.todoList.insertBefore(dragging, afterElement)
       }
 
-      // console.log("afterElement: ", afterElement.)
-
-      // console.log("todos: ", this.todoList)
-
-      // this.saveTodos
-
-      // console.log("todo__categoryss: ", todoItem[0].id)
-      // console.log("todo__categoryss: ", todoItem[0].querySelector('span').textContent)
-      // console.log("todos: ", this.todos)
     })
 
     const getDragAfterElement = (y) => {
@@ -114,6 +117,10 @@ export default class Todo {
     const li = document.createElement('li');
     li.setAttribute('draggable', true);
     li.classList.add('todo__item', 'draggable');
+
+    // li.addEventListener('click', (event)=>{
+    //   console.log(event.currentTarget.value)
+    // })
 
     // for drag and drop
     li.addEventListener('dragstart', ()=>{
