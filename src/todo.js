@@ -2,20 +2,75 @@
 
 export default class Todo {
   constructor(category) {
-    this.todo = document.querySelector(category);
+    this.todo = document.querySelector(`.${category}`);
     this.todoForm = this.todo.querySelector('.todo__form');
     this.todoInput = this.todoForm.querySelector('.todo__input');
     this.todoList = this.todo.querySelector('.todo__list');
     this.TODOS_LS = category;
     this.todos = [];
+
+
+
     this.todoForm.addEventListener('submit', (event) => {
       this.onHandleSubmit(event);
     });
 
+
+
+
+    this.todoList.addEventListener('dragover', (event)=>{
+      event.preventDefault()
+      // console.log('dragover')
+      const afterElement = getDragAfterElement(event.clientY)
+
+      const dragging = document.querySelector('.dragging')
+
+
+      if(afterElement === undefined){
+        this.todoList.appendChild(dragging)
+      }else{
+        this.todoList.insertBefore(dragging, afterElement)
+      }
+
+      // console.log("afterElement: ", afterElement.)
+
+      // console.log("todos: ", this.todoList)
+
+      // this.saveTodos
+
+      // console.log("todo__categoryss: ", todoItem[0].id)
+      // console.log("todo__categoryss: ", todoItem[0].querySelector('span').textContent)
+      // console.log("todos: ", this.todos)
+    })
+
+    const getDragAfterElement = (y) => {
+      
+      const draggableElements = [...this.todo.querySelectorAll('.draggable:not(.dragging)')]
+      // console.log(draggableElements)
+
+      return draggableElements.reduce((closest, child)=>{
+        const box = child.getBoundingClientRect();
+        // console.log("box : ", box.top - box.height/2)
+        // console.log("y: ", y)
+        const offset = y - box.top - box.height/2 
+        // console.log('offset: ', offset)
+        // console.log('closet: ', closest)
+
+        if(offset<0 && offset>closest.offset){
+          return {offset: offset, element:child}
+        }else{
+          return closest
+        }
+      }, {offset: Number.NEGATIVE_INFINITY}).element
+    }
+
+    // 저장하는 logic
+
   }
 
-  saveTodos = (todos) => {
-    localStorage.setItem(this.TODOS_LS, JSON.stringify(todos));
+
+  saveTodos = (category, todos) => {
+    localStorage.setItem(category, JSON.stringify(todos));
   };
 
   checkBtn = (event) => {
@@ -45,11 +100,11 @@ export default class Todo {
       this.todoForm.style.display ='flex'
     }
     
-
     this.todos = cleanTodos;
-    this.saveTodos(this.todos);
+    this.saveTodos(this.TODOS_LS, this.todos);
   };
 
+  // make now todo__item
   paintTodo = (text) => {
     if (text === '') {
       this.todoInput.focus();
@@ -57,18 +112,61 @@ export default class Todo {
     }
 
     const li = document.createElement('li');
-    li.setAttribute('class', 'todo__item');
+    li.setAttribute('draggable', true);
+    li.classList.add('todo__item', 'draggable');
+
+    // for drag and drop
+    li.addEventListener('dragstart', ()=>{
+      li.classList.add('dragging')
+    })
+
+    li.addEventListener('dragend', ()=>{
+      li.classList.remove('dragging')
+      const categories = document.querySelectorAll('.todo__category')
+
+      // drag 끝나면 변경사항을 local storage에 저장한다 
+
+      // 모든 카테고리에 대해서 
+      categories.forEach(category => {
+        const newTodos = [];
+
+        const categoryText = category.className.split(' ')[1]
+        console.log("category: ", categoryText)
+
+        // console.log(this.TODOS_LS)
+        const todoList = category.querySelector('.todo__list').querySelectorAll('.todo__item')
+        // console.log("todoList: ", todoList.querySelectorAll('.todo__item'))
+
+        todoList.forEach(item => {
+          // console.log("item: id", item.id)
+          // console.log("item: text", item.querySelector('span').textContent)
+          newTodos.push({'id': item.id, 'text':item.querySelector('span').textContent})
+        })
+
+        
+        console.log("newTodos: ", newTodos)
+        console.log("save")
+        this.saveTodos(categoryText, newTodos)
+
+      })
+
+      // saveTodos = (category, todos)
+      
+      
+    })
+
 
     const check = document.createElement('button');
-    check.setAttribute('class', 'todo__check unchecked');
+    check.classList.add('todo__check','unchecked');
 
     const span = document.createElement('span');
-    span.setAttribute('class', 'todo__content');
+    span.classList.add('todo__content');
 
     const delBtn = document.createElement('button');
-    delBtn.setAttribute('class', 'todo__delete');
+    delBtn.classList.add('todo__delete');
 
-    const newId = this.todos.length + 1;
+    // const newId = this.todos.length + 1;
+    const newId = Date.now()
 
     check.innerHTML = '<i class="far fa-square"></i>';
     check.addEventListener('click', this.checkBtn);
@@ -91,7 +189,7 @@ export default class Todo {
     };
 
     this.todos.push(todoObj);
-    this.saveTodos(this.todos);
+    this.saveTodos(this.TODOS_LS, this.todos);
     if(this.todoList.childElementCount >= 10){
       this.todoForm.style.display ='none'
     }
@@ -119,6 +217,6 @@ export default class Todo {
         this.paintTodo(todo.text);
       });
     }
-    this.todoInput.focus();
+    // this.todoInput.focus();
   };
 }

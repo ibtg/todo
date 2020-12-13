@@ -36,10 +36,10 @@ quotes.getQuotes();
 const days = new Days();
 days.getDays();
 
-const goal = new Todo('.item__goal');
-const doing = new Todo('.item__doing');
-const todo = new Todo('.item__todo');
-const done = new Todo('.item__done');
+const goal = new Todo('item__goal');
+const doing = new Todo('item__doing');
+const todo = new Todo('item__todo');
+const done = new Todo('item__done');
 
 goal.loadTodos();
 doing.loadTodos();
