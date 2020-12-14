@@ -15,10 +15,10 @@ weather.loadCoords();
 const quotes = new Quotes();
 quotes.getQuotes();
 
-const goal = new Todo('item__goal');
-const doing = new Todo('item__doing');
-const todo = new Todo('item__todo');
-const done = new Todo('item__done');
+const goal = new Todo('category__goal');
+const doing = new Todo('category__doing');
+const todo = new Todo('category__todo');
+const done = new Todo('category__done');
 
 goal.loadTodos();
 doing.loadTodos();
