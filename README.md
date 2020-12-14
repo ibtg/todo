@@ -1,8 +1,10 @@
-# Project
+## Project
 
 - 해야할 일들을 관리하기 위해 크롬 확장 프로그램 [Momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=ko)을 사용하던 중 할일 목록을 여러개의 카테고리로 나누어서 관리할 수 없다는 점이 불편해서 [Notion Templage](https://www.notion.so/Notion-Template-Gallery-181e961aeb5c4ee6915307c0dfd5156d)을 참고하여 필요한 기능을 추가해 만든 Todo 어플리케이션 입니다.
 
 - https://ibtg.github.io/todo/
+
+---
 
 ### Skill Stack
 
@@ -15,6 +17,16 @@
 ## Features
 
 - 반응형으로 웹을 만들었고 local storage에 입력한 정보들을 저장해서 새로고침 하더라고 입력한 정보가 유지되도록 하였습니다.
+
+- 다음과 같은 웹 브라우저 환경에서 동작합니다.
+
+  - Chrome (87.0)
+
+  - Microsoft Edge (87.0)
+
+  - Firebox (83.0)
+
+  - Naver Whale (2.8)
 
 - 아래는 해당 어플리케이션에 구현된 기능에 대한 상세 설명입니다.
 
@@ -32,7 +44,7 @@
 
 - 추가한 목록을 드래그해서 다른 카테고리로 이동시킬 수 있습니다.
 
-### quotes
+### Quotes
 
 - [https://type.fit/api/quotes](https://type.fit/api/quotes) API 사용
 - 매일 새로운 명언을 가져와서 해당 명언의 저자와 함께 화면에 표시해줍니다
