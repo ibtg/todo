@@ -75,7 +75,6 @@ li {
   list-style: none;
 }
 
-/* blinds for IR */
 .blind {
   position: absolute;
   width: 1px;
@@ -89,8 +88,11 @@ li {
 .background {
   background-color: var(--color-background);
   width: 100%;
-  min-height: 100%;
-  position: relative;
+  height: 100%;
+  /* min-height: 100%; */
+  /* position: relative; */
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .background.darkmode {
@@ -101,14 +103,21 @@ li {
 /* header */
 .header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   padding-top: var(--regular-space);
-  align-items: flex-start;
+  margin-bottom: var(--regular-space);
+  height: 48px;
+  height: 8%;
 }
 
 .search {
   margin-left: var(--regular-space);
   color: var(--color-dary-gray);
+}
+
+.header .darkmode {
+  margin-right: var(--regular-space);
 }
 
 .search__icon {
@@ -138,14 +147,6 @@ li {
 }
 .search__input:focus {
   opacity: 1;
-}
-
-/* days */
-.day {
-  font-size: var(--font-regular);
-  margin-right: var(--regular-space);
-  color: var(--color-dary-gray);
-  margin-bottom: var(--regular-space);
 }
 
 /* darkmode */
@@ -206,6 +207,8 @@ li {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* height: 100%; */
+  flex-basis: 60vh;
 }
 
 /* quotes */
@@ -216,7 +219,7 @@ li {
   align-items: center;
   flex-wrap: wrap;
   color: var(--color-dary-gray);
-  margin-bottom: 40px;
+  margin: 20px 20px 40px 20px;
 }
 
 /* quotes */
@@ -232,6 +235,7 @@ li {
 /* todo */
 
 .todo {
+  margin-top: var(--regular-space);
   display: flex;
 }
 
@@ -300,12 +304,13 @@ li {
 
 .list__title {
   margin-bottom: var(--small-space);
-  width: 52px;
-  height: 28px;
+  width: 58px;
+  height: 32px;
   font-size: var(--font-small);
   text-align: center;
   border-radius: var(--size-border-radius);
   color: var(--color-dary-gray);
+  padding: var(--tiny-space);
 }
 
 .list__title.title__goal {
@@ -389,6 +394,7 @@ li {
 .date {
   font-size: var(--font-small);
 }
+
 /* clock */
 .clock {
   font-size: var(--font-regular);
@@ -419,9 +425,7 @@ li {
     height: 100vh;
     min-width: 500px;
   }
-  .quotes {
-    margin: 20px;
-  }
+
   .todo {
     display: flex;
     flex-direction: column;

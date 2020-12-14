@@ -22,7 +22,6 @@ export default class  Darkmode {
     makeDarkMode = () =>{
 
       document.querySelector('.background').classList.toggle('darkmode');
-      document.querySelector('.day').classList.toggle('darkmode__fontcolor')
   
       document.querySelector('.date').classList.toggle('darkmode__fontcolor')
       document.querySelector('.clock').classList.toggle('darkmode__fontcolor')
