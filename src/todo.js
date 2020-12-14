@@ -47,8 +47,8 @@ export default class Todo {
     const getDragAfterElement = (y) => {
       
       const draggableElements = [...this.todo.querySelectorAll('.draggable:not(.dragging)')]
-
       return draggableElements.reduce((closest, child)=>{
+        const box = child.getBoundingClientRect()
         const offset = y - box.top - box.height/2 
 
         if(offset<0 && offset>closest.offset){
@@ -66,19 +66,46 @@ export default class Todo {
     localStorage.setItem(category, JSON.stringify(todos));
   };
 
+
+
   checkBtn = (event) => {
     const btn = event.target.parentNode;
-    const unchecked = btn.classList.toggle('unchecked');
+    const unchecked = btn.classList.contains('unchecked');
+
     const li = btn.parentNode;
 
+    const checkTodos = this.todos.map((todo) => {
+      if(todo.id === parseInt(li.id)){
+        return { 
+          ...todo,
+          unchecked: !unchecked
+        }
+      }else{
+        return todo
+      }
+    });
+
+    this.todos = checkTodos
+    this.saveTodos(this.TODOS_LS, this.todos);
+
+
+    
     // add save function after checked
-    if (!unchecked) {
+    if (unchecked) {
+      // if checkbox is checked
       btn.innerHTML = '<i class="far fa-check-square"></i>';
-      li.style.textDecoration = 'line-through';
+      li.classList.add('todo__itemChecked')
+      btn.classList.remove('unchecked')
     } else {
+      // if checkbox is unchecked
       btn.innerHTML = '<i class="far fa-square"></i>';
-      li.style.textDecoration = 'none';
+      // li.style.textDecoration = 'none';
+
+      li.classList.remove('todo__itemChecked')
+      btn.classList.add('unchecked')
+
     }
+
   };
 
   deleteBtn = (event) => {
@@ -98,18 +125,15 @@ export default class Todo {
     this.saveTodos(this.TODOS_LS, this.todos);
   };
 
-  // make now todo__item
-  paintTodo = (text) => {
-    if (text === '') {
-      this.todoInput.focus();
-      return;
-    }
+  // function for painting todo items
+  paintTodo = (todo) => {
 
     const li = document.createElement('li');
+
+    // for drag and drop
     li.setAttribute('draggable', true);
     li.classList.add('todo__item', 'draggable');
 
-    // for drag and drop
     li.addEventListener('dragstart', ()=>{
       li.classList.add('dragging')
     })
@@ -118,87 +142,105 @@ export default class Todo {
       li.classList.remove('dragging')
       const categories = document.querySelectorAll('.todo__category')
 
-      // after dragend, save every changes of category to local storage모
+      // after dragend, save every changes of category to local storage
       categories.forEach(category => {
         const newTodos = [];
-
         const categoryText = category.className.split(' ')[1]
         const todoList = category.querySelector('.todo__list').querySelectorAll('.todo__item')
-
-
         todoList.forEach(item => {
-          newTodos.push({'id': item.id, 'text':item.querySelector('span').textContent})
+          newTodos.push({
+            id: parseInt(item.id), 
+            text: item.querySelector('span').textContent,
+            unchecked: item.querySelector('.todo__check').classList.contains('unchecked') === true ? true : false
+        
+        })
         })
 
         this.saveTodos(categoryText, newTodos)
-
       })
-
-      
     })
 
 
     const check = document.createElement('button');
-    check.classList.add('todo__check','unchecked');
+    check.addEventListener('click', this.checkBtn);
 
+    // if checkbox is unchecked
+    if(todo.unchecked === true){
+      check.classList.add('todo__check','unchecked')
+      check.innerHTML = '<i class="far fa-square"></i>';
+    }else{
+      check.classList.add('todo__check');
+      li.classList.add('todo__itemChecked')
+      check.innerHTML = '<i class="far fa-check-square"></i>';
+    } 
+    
+    
     const span = document.createElement('span');
+    span.innerText = todo.text;
     span.classList.add('todo__content');
 
     const delBtn = document.createElement('button');
     delBtn.classList.add('todo__delete');
-
-    // const newId = this.todos.length + 1;
-    const newId = Date.now()
-
-    check.innerHTML = '<i class="far fa-square"></i>';
-    check.addEventListener('click', this.checkBtn);
-
     delBtn.innerHTML = '<i class="fas fa-times"></i>';
     delBtn.addEventListener('click', this.deleteBtn);
 
-    span.innerText = text;
+    
 
     li.appendChild(check);
     li.appendChild(span);
     li.appendChild(delBtn);
 
-    li.id = newId;
-
+    li.id = todo.id;
     this.todoList.appendChild(li);
+
+  };
+
+  onHandleSubmit = (event) => {
+
+    event.preventDefault();
+
+    const text = this.todoInput.value;
+
+    if (text === '') {
+      this.todoInput.focus();
+      return;
+    }
+
+    const newId = Date.now();
+    
     const todoObj = {
       id: newId,
       text: text,
+      unchecked: true
     };
 
     this.todos.push(todoObj);
     this.saveTodos(this.TODOS_LS, this.todos);
-    if(this.todoList.childElementCount >= 10){
-      this.todoForm.style.display ='none'
-    }
-  };
 
-  onHandleSubmit = (event) => {
-    event.preventDefault();
 
-    if (this.todos.length < 10) {
-      const currentValue = this.todoInput.value;
-      this.paintTodo(currentValue);
-    }else{
-    }
+    this.paintTodo(todoObj);
 
     this.todoInput.value = '';
     this.todoInput.focus();
+
+    if(this.todoList.childElementCount >= 10){
+      this.todoForm.style.display ='none'
+    }
+
   };
 
   loadTodos = () => {
     const loadedTodos = localStorage.getItem(this.TODOS_LS);
     const parsedTodos = JSON.parse(loadedTodos);
 
-    if (loadedTodos !== null) {
+    if (loadedTodos === null || parsedTodos.length === 0 ) {
+      return 
+    }else{
       parsedTodos.forEach((todo) => {
-        this.paintTodo(todo.text);
+        this.paintTodo(todo);
+        this.todos.push(todo)
       });
+
     }
-    // this.todoInput.focus();
   };
 }
