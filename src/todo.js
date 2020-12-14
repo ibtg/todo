@@ -99,8 +99,6 @@ export default class Todo {
     } else {
       // if checkbox is unchecked
       btn.innerHTML = '<i class="far fa-square"></i>';
-      // li.style.textDecoration = 'none';
-
       li.classList.remove('todo__itemChecked')
       btn.classList.add('unchecked')
 

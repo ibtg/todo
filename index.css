@@ -33,8 +33,8 @@
 
   --medium-space: 24px;
   --regular-space: 18px;
-  --base-space: 8px;
   --small-space: 12px;
+  --base-space: 8px;
   --tiny-space: 4px;
 }
 
@@ -112,7 +112,6 @@ li {
 }
 
 .search__icon {
-  /* color: var(--color-dary-gray); */
   margin-right: var(--base-space);
   cursor: pointer;
 }
@@ -237,10 +236,8 @@ li {
 }
 
 /* todo__lists */
-.item__doing,
-.item__todo,
-.item__done {
-  margin-left: 12px;
+.todo__category {
+  margin-left: var(--regular-space);
 }
 
 .todo__input,
@@ -358,8 +355,6 @@ li {
 .far,
 .fas {
   font-size: 18px;
-  /* width: 100%;
-  height: 100%; */
 }
 
 .todo__list .todo__item .todo__check:hover,
@@ -422,13 +417,18 @@ li {
 @media screen and (max-width: 768px) {
   body {
     height: 100vh;
+    min-width: 500px;
   }
   .quotes {
-    margin: 20px 0;
+    margin: 20px;
   }
-  .todo__container {
+  .todo {
     display: flex;
     flex-direction: column;
+  }
+
+  .todo__category {
+    margin-bottom: var(--medium-space);
   }
 
   .todo__lists {
@@ -437,7 +437,6 @@ li {
   }
 
   .footer {
-    /* bottom: var(--regular-space); */
     position: relative;
     padding-bottom: var(--regular-space);
   }
