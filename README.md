@@ -1,47 +1,52 @@
-# Features
+# Project
+
+- 해야할 일들을 관리하기 위해 크롬 확장 프로그램 [Momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=ko)을 사용하던 중 할일 목록을 여러개의 카테고리로 나누어서 관리할 수 없다는 점이 불편해서 [Notion Templage](https://www.notion.so/Notion-Template-Gallery-181e961aeb5c4ee6915307c0dfd5156d)을 참고하여 필요한 기능을 추가해 만든 Todo 어플리케이션 입니다.
 
 - https://ibtg.github.io/todo/
 
-## Greeting
+### Skill Stack
 
-- 처음 앱을 실행하면 유저에게 이름을 입력 받는다
-- 입력 받은 이름은 오른쪽 상단에 표시
+- HTML
+- CSS
+- JavaScript
 
-## ToDo
+---
 
-- 최대 10개 할 일을 입력할 수 있다.
-- 체크 하면, 입력한 텍스트 가운데 가로줄 생기고 체크 박스 모양이 바뀐다
-- 삭제 버튼으로 입력한 텍스트를 삭제할 수 있다
-- 입력한 리스트에 마우스를 올리면 확대된다
-- 체크 버튼과 삭제버튼 위에 마우스를 올리면 아이콘이 확대된다
+## Features
 
-## quotes.js
+- 반응형으로 웹을 만들었고 local storage에 입력한 정보들을 저장해서 새로고침 하더라고 입력한 정보가 유지되도록 하였습니다.
+
+- 아래는 해당 어플리케이션에 구현된 기능에 대한 상세 설명입니다.
+
+### ToDo
+
+- 할 일을 최대 10개까지 입력할 수 있습니다.
+
+- 네모 박스를 눌러 완료한 일을 체크하거나 삭제 버튼을 눌러 입력한 목록 삭제할 수 있습니다.
+
+### Darkmode
+
+- 오른쪽 상단의 버튼을 눌러서 다크모드를 활성화 시킬 수있습니다
+
+### Drag and Drop
+
+- 추가한 목록을 드래그해서 다른 카테고리로 이동시킬 수 있습니다.
+
+### quotes
 
 - [https://type.fit/api/quotes](https://type.fit/api/quotes) API 사용
-- 매일 새로운 글귀를 가져와서 화면에 표시
+- 매일 새로운 명언을 가져와서 해당 명언의 저자와 함께 화면에 표시해줍니다
 
-## Weather
+### Weather
 
 - [https://openweathermap.org/api](https://openweathermap.org/api) API 사용
-- 사용자의 위치를 파악해서 섭씨 온도를 표시
-- 날씨에 따라 다른 모양의 아이콘 표시
 
-## Days
+- 사용자의 위치를 파악해서 섭씨 온도를 표시하고 날씨에 따라 다른 모양의 아이콘 표시합니다.
 
-- 앱을 시작하는 날을 Day 1으로, 것을 오른쪽 상단에 이름과 함께 표시
+### Time
 
-- 하루마다 날짜가 카운트 되어서 오른쪽 상단에 표시된다
+- 오늘의 요일, 월, 일과 AM, PM으로 시간, 분, 초가 오른쪽 하단에 표시됩니다
 
-## Background
+### Search
 
-- [https://unsplash.com/](https://unsplash.com/) API 사용
-
-- 매일매일 새로운 이미지를 가져와서 화면에 표시되도록 한다
-
-## Clock
-
-- AM, PM으로 시간, 분, 초가 오른쪽 하단에 표시된다
-
-## Search
-
-- 왼쪽 상단에 키워드 입력하면 검색 결과가 새 창에서 표시된다
+- 왼쪽 상단에 키워드를 입력하면 검색 결과가 구글 검색 결과가 새 창에서 표시됩니다
