@@ -1,6 +1,8 @@
 ## Project
 
-- 해야할 일들을 관리하기 위해 크롬 확장 프로그램 [Momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=ko)을 사용하던 중 할일 목록을 여러개의 카테고리로 나누어서 관리할 수 없다는 점이 불편해서 [Notion Templage](https://www.notion.so/Notion-Template-Gallery-181e961aeb5c4ee6915307c0dfd5156d)을 참고하여 필요한 기능을 추가해 만든 Todo 어플리케이션 입니다.
+- 카테고리 별로 목표를 관리할 수 있는 웹 어플리케이션입니다.
+
+- 생산성 도구인 크롬 확장 프로그램 [Momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=ko)을 사용하던 중 할일 목록을 여러개의 카테고리로 나누어서 관리할 수 없다는 점이 불편해서 [Notion Templage](https://www.notion.so/Notion-Template-Gallery-181e961aeb5c4ee6915307c0dfd5156d)을 참고하여 필요한 기능을 추가해 만든 Todo 어플리케이션 입니다.
 
 - https://ibtg.github.io/todo/
 
