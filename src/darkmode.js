@@ -34,6 +34,23 @@ export default class  Darkmode {
     
       document.querySelector('.search__icon').classList.toggle('darkmode__fontcolor')
       document.querySelector('.search__input').classList.toggle('darkmode__fontcolor')
+
+      console.log("todo_item: ", document.querySelectorAll('.todo__content'))
+
+      document.querySelectorAll('.todo__check').forEach(check=>
+        check.classList.toggle('darkmode__fontcolor'))
+
+      document.querySelectorAll('.todo__content').forEach(content=>
+        content.classList.toggle('darkmode__fontcolor'))
+
+      document.querySelectorAll('.todo__delete').forEach(content=>
+        content.classList.toggle('darkmode__fontcolor'))
+
+      document.querySelectorAll('.todo__item').forEach(item=>
+        item.classList.toggle('darkmode'))
+
+      document.querySelectorAll('.todo__input').forEach(input=>
+        input.classList.toggle('darkmode'))
       
       document.querySelectorAll('.list__title').forEach(title => 
         title.classList.toggle('darkmode__fontcolor'))
