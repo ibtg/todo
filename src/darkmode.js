@@ -35,8 +35,6 @@ export default class  Darkmode {
       document.querySelector('.search__icon').classList.toggle('darkmode__fontcolor')
       document.querySelector('.search__input').classList.toggle('darkmode__fontcolor')
 
-      console.log("todo_item: ", document.querySelectorAll('.todo__content'))
-
       document.querySelectorAll('.todo__check').forEach(check=>
         check.classList.toggle('darkmode__fontcolor'))
 

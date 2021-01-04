@@ -6,6 +6,7 @@ import Quotes from './quotes.js';
 import Todo from './todo.js';
 import Darkmode from './darkmode.js'
 
+
 const time = new Time();
 time.StartTime();
 
@@ -20,13 +21,14 @@ const doing = new Todo('category__doing');
 const todo = new Todo('category__todo');
 const done = new Todo('category__done');
 
+const darkmode = new Darkmode();
+darkmode.darkmodeCheck();
+
 goal.loadTodos();
 doing.loadTodos();
 todo.loadTodos();
 done.loadTodos();
 
-const darkmode = new Darkmode();
-darkmode.darkmodeCheck();
 
 
 

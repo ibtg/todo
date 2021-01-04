@@ -3,11 +3,16 @@
 export default class Todo {
   constructor(category) {
     this.todo = document.querySelector(`.${category}`);
+    this.todoItem = this.todo.querySelector('.todo__item')
     this.todoForm = this.todo.querySelector('.todo__form');
     this.todoInput = this.todoForm.querySelector('.todo__input');
     this.todoList = this.todo.querySelector('.todo__list');
     this.TODOS_LS = category;
     this.todos = [];
+
+
+    // console.log("this.todoItem :  ", localStorage.getItem('darkmode'))
+    // console.log("this.todoItem :  ", document.querySelector('.background').classList.contains('background'))
 
 
     this.todoForm.addEventListener('submit', (event) => {
@@ -181,7 +186,18 @@ export default class Todo {
     delBtn.classList.add('todo__delete');
     delBtn.innerHTML = '<i class="fas fa-times"></i>';
     delBtn.addEventListener('click', this.deleteBtn);
-
+    
+    
+    // if item added in darkmode
+    const darkmodeCheck =  JSON.parse(localStorage.getItem('darkmode'))
+    
+    if(darkmodeCheck === true){
+      li.classList.add('darkmode')
+      check.classList.add('darkmode__fontcolor')
+      span.classList.add('darkmode__fontcolor')
+      delBtn.classList.add('darkmode__fontcolor')
+      
+    }
     
 
     li.appendChild(check);
