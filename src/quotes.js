@@ -3,21 +3,14 @@
 export default class Quotes {
   constructor() {
     this.quotes = document.querySelector('.quotes');
+    this.quotesContent = this.quotes.querySelector('.quotes__content');
+    this.quotesAuthor = this.quotes.querySelector('.quotes__author');
     this.QUOTES_LS = 'quotes';
   }
 
   paintQuotes = (obj) => {
-    const quotesContent = document.createElement('h1');
-    quotesContent.setAttribute('class', 'quotes__content');
-
-    const quotesAuthor = document.createElement('span');
-    quotesAuthor.setAttribute('class', 'quotes__author');
-
-    quotesContent.textContent = `"${obj.quote}"`;
-    quotesAuthor.textContent = `- ${obj.author} -`;
-
-    this.quotes.appendChild(quotesContent);
-    this.quotes.appendChild(quotesAuthor);
+    this.quotesContent.textContent = `"${obj.quote}"`;
+    this.quotesAuthor.textContent = `- ${obj.author} -`;
   };
 
   getQuotes = () => {
